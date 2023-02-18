@@ -32,7 +32,7 @@ export const delayForSpinner = (delayed) => {
     delayed()
     preloader.classList.add("hidden")
   }, 500)}
-
+//
 /* // Function for showing spinner
 export function displaySpinner () {
   preloader.classList.remove("hidden")
