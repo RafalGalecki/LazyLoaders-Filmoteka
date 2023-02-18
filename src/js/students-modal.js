@@ -24,7 +24,7 @@ modalLink.addEventListener('click', () => {
     }
     slides[slideIndex - 1].style.display = 'block';
     navlinks[slideIndex - 1].className += ' active';
-    timer = setTimeout(showSlides, 2000);
+    timer = setTimeout(showSlides, 1000);
   }
   showSlides();
 });
