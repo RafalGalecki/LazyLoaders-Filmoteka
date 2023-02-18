@@ -22,7 +22,6 @@
     "buffer": "^6.0.3",
     "firebase": "^9.17.1",
     "lodash.debounce": "^4.0.8",
-    "lodash.merge": "^4.6.2",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.6",
     "spin.js": "^4.1.1"
