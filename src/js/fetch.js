@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { renderMovies } from './search-form';
-//import { loadMovies } from './cards-home';
+import { loadMovies } from './cards-home';
 import { renderCardPaginator } from './pagination';
 import { refreshRendering } from './refreshrendering';
 

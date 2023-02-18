@@ -1,5 +1,5 @@
-// import '../sass/components/_header-library.scss';
-// import '../sass/components/_header-home.scss';
+ import '../sass/components/_header-library.scss';
+ import '../sass/components/_header-home.scss';
 
 import { getGenres, getMovieDetails } from './fetch';
 import { loadMovies } from './cards-home';

@@ -1,4 +1,4 @@
-//import '../sass/components/_modal-card.scss';
+import '../sass/components/_modal-card.scss';
 import { moviesContainer } from './cards-home';
 import { watchedMoviesContainer } from './library';
 import { getMovieDetails } from './fetch';
