@@ -9,3 +9,7 @@ export function refreshRendering() {
     }
   }
 }
+export function refreshRenderingPagination() {
+  const elementToRemove = document.querySelector('#pagination-numbers');
+  elementToRemove.innerHTML = '';
+}
