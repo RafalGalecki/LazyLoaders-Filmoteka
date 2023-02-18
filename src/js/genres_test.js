@@ -22,17 +22,18 @@ const genres = [
 
 const genre_ids = [10749, 35];
 
-const typeGenres = genres.reduce( (acc,el)=>{
-    if (genre_ids.includes(el.id))
-    {acc.push(el.name)}
-    return acc
-},[])
+const typeGenres = genres.reduce((acc, el) => {
+  if (genre_ids.includes(el.id)) {
+    acc.push(el.name);
+  }
+  return acc;
+}, []);
 
 console.log(typeGenres);
 
 const typeGenres2 = genres
-.filter(el => genre_ids.includes(el.id))
-.map(el=> el.name)
-.join("/")
+  .filter(el => genre_ids.includes(el.id))
+  .map(el => el.name)
+  .join('/');
 
 console.log(typeGenres2);
