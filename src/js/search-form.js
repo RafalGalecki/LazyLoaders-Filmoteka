@@ -1,8 +1,9 @@
 import debounce from 'lodash.debounce';
 import { getSearchedMovies, getGenres } from './fetch';
-import { refreshRendering } from './refreshrendering';
+import { refreshRendering, refreshRenderingPagination } from './refreshrendering';
 import { moviesContainer } from './cards-home';
 import { Notify } from 'notiflix';
+import { preloader, delayForSpinner } from './spinner';
 
 const DEBOUNCE_DELAY = 3000;
 export let searchInput;
@@ -20,9 +21,16 @@ const input = document.querySelector('#search-form input');
 // }, DEBOUNCE_DELAY);
 
 export const handleSubmit = function (e) {
+  preloader.classList.remove("hidden")
+  refreshRendering();
+  refreshRenderingPagination()
+
   e.preventDefault();
   searchInput = input.value.trim();
-  getSearchedMovies(searchInput);
+  setTimeout(() => {
+    getSearchedMovies(searchInput);
+    preloader.classList.add("hidden")
+  }, 500)
   clearInput();
 };
 

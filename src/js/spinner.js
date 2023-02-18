@@ -1,5 +1,7 @@
 import {Spinner} from 'spin.js';
 
+export const preloader = document.getElementById('preloader')
+
 var opts = {
   lines: 13, // The number of lines to draw
   length: 38, // The length of each line
@@ -23,3 +25,21 @@ var opts = {
 
 var target = document.getElementById('preloader')
 var spinner = new Spinner(opts).spin(target);
+
+export const delayForSpinner = (delayed) => {
+  preloader.classList.remove("hidden")
+  setTimeout (() => {
+    delayed()
+    preloader.classList.add("hidden")
+  }, 500)}
+
+/* // Function for showing spinner
+export function displaySpinner () {
+  preloader.classList.remove("hidden")
+}
+
+export function hideSpinner () {
+  setTimeout (() => {
+    preloader.classList.add("hidden")
+  }, 5000);
+} */

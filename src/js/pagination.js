@@ -4,6 +4,10 @@ import axios from 'axios';
 import { API_KEY, BASE_URL } from './fetch';
 import { searchInput } from './search-form';
 import { renderMovies } from './search-form';
+import { preloader } from './spinner';
+import { refreshRendering, refreshRenderingPagination } from './refreshrendering';
+
+const paginationNumbers = document.getElementById('pagination-numbers')
 
 export function renderCardPaginator(totalPages, selectedPage = 1) {
   const paginationContainer = document.getElementById('pagination-numbers');
@@ -158,9 +162,6 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
       backwardEllipsisBtn.classList.remove('hidden');
     }
     // Preloader ------------------------------
-    const preloader = document.getElementById('preloader');
-
-    preloader.classList.add('hidden');
 
     // set active page ---------------------------
 
@@ -182,8 +183,16 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
       .get(urlForSearching)
       .then(function (response) {
         // handle success
+        preloader.classList.remove("hidden")
+        paginationNumbers.classList.add('hidden')
+        refreshRendering();
 
+
+        setTimeout(() => {
         renderMovies(response);
+          preloader.classList.add("hidden")
+          paginationNumbers.classList.remove('hidden')
+        }, 500)
       })
       .catch(function (error) {
         // handle error
