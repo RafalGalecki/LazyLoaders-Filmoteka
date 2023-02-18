@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl-PL">    
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,7 @@
     />
     <meta
       name="keywords"
-      content="movie, movies, film, genres, popularity movies"     
+      content="movie, movies, film, genres, popularity movies"
     />
     <meta name="robots" content="index,follow" />
     <title>Filmoteka</title>
@@ -20,26 +20,26 @@
       rel="stylesheet"
     />
     <!-- favicon <link rel="" href="" type="" /> -->
-    <link rel="stylesheet" href="./sass/index.scss" />
+    <!-- Please do not change stylesheet below - Parcel supports Sass automatically, no sass compiler needed
+    To ensure proper sass complilation, make sure your styles are processed through index.scss-->
+    <link rel="stylesheet" href="/src/sass/index.scss" />
   </head>
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-
-    <header>
+    
+    <div class="content-wrap">
       <include src="./partials/header-home.html"></include>
-    </header>
-    <main>
+      <include src="./partials/header-library.html"></include>
+      <include src="./partials/preloader.html"></include>
       <include src="./partials/cards-home.html"></include>
-    <include src="./partials/pagination.html"></include>
-    </main>
-    <footer>
-      <include src="./partials/footer.html"></include>
-    </footer>
+      <include src="./partials/cards-library.html"></include>
+      <include src="./partials/pagination.html"></include>
+    </div>
+    <include src="./partials/footer.html"></include>
     <include src="./partials/modal-log-in.html"></include>
     <include src="./partials/modal-card.html"></include>
     <include src="./partials/modal-students.html"></include>
     <script type="module" src="./index.js"></script>
     <!-- <include src="./partials/theme.html"></include> -->
-
   </body>
 </html>
