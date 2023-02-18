@@ -1,0 +1,51 @@
+.btn {
+  display: block;
+  margin: 0;
+  width: 112.58px;
+  height: 44px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn__addToWatched {
+  border: 1px solid #ff6b01;
+  background: #ff6b01;
+  color: #ffffff;
+}
+
+.btn__addToQue {
+  background: #ffffff;
+}
+
+.btn--close {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  transform: rotate(0);
+  transition: transform 0.5s ease;
+}
+
+.btn--close:hover {
+  transform: rotate(-90deg);
+}
+
+.btn__icon-close {
+  width: 30px;
+  height: 30px;
+  stroke: #000;
+}
