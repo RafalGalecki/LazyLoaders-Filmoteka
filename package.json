@@ -1,24 +1,29 @@
 {
-  "name": "parcel-project-filmoteka",
+  "name": "lazyloaders-filmoteka",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://rafalgalecki.github.io/parcel-project-filmoteka",
+  "homepage": "https://rafalgalecki.github.io/LazyLoaders-Filmoteka",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-filmoteka/"
+    "build": "parcel build src/*.html --public-url /LazyLoaders-Filmoteka/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RafalGalecki/parcel-project-filmoteka.git"
+    "url": "git+https://github.com/RafalGalecki/LazyLoaders-Filmoteka.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Lazy Loaders <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RafalGalecki/parcel-project-filmoteka/issues"
+    "url": "https://github.com/RafalGalecki/LazyLoaders-Filmoteka/issues"
   },
   "dependencies": {
-    "modern-normalize": "^1.1.0"
+    "axios": "^1.3.3",
+    "firebase": "^9.17.1",
+    "lodash.debounce": "^4.0.8",
+    "modern-normalize": "^1.1.0",
+    "notiflix": "^3.2.6",
+    "spin.js": "^4.1.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
