@@ -1,11 +1,11 @@
-// 'use strict';
+'use strict';
 
-// // Refresh rendered movie cards
-// export function refreshRendering() {
-//   const elementToRemove = document.querySelectorAll('.movie-card');
-//   if (elementToRemove.length > 0) {
-//     for (let i = 0; i < elementToRemove.length; i++) {
-//       elementToRemove[i].remove();
-//     }
-//   }
-// }
+// Refresh rendered movie cards
+export function refreshRendering() {
+  const elementToRemove = document.querySelectorAll('.movie-card');
+  if (elementToRemove.length > 0) {
+    for (let i = 0; i < elementToRemove.length; i++) {
+      elementToRemove[i].remove();
+    }
+  }
+}
