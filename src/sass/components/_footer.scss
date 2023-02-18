@@ -1,0 +1,54 @@
+@use '../utils' as *;
+
+// edit below
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__text {
+    display: flex;
+    height: 100%;
+    color: #545454;
+    font-size: 14px;
+    line-height: 1.17;
+  }
+
+  &__link {
+    color: #545454;
+    text-decoration: underline;
+  }
+
+  &__link:hover {
+    cursor: pointer;
+    color: red;
+  }
+
+  &__icon {
+    height: 13px;
+    width: 14px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    height: 77px;
+
+    &__container {
+      flex-direction: row;
+    }
+  }
+}

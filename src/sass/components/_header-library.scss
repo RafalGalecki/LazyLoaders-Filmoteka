@@ -1,0 +1,26 @@
+@use '../utils' as *;
+
+// edit below
+
+.header-library {
+  position: relative;
+  background-image: url('/src/images/Rectangle-1x-desktop.jpg');
+  background-position: center;
+  max-width: 1024px;
+  height: 230px;
+  margin: 0 auto;
+  color: $secondary-text-cl;
+  font-family: $main-font;
+}
+
+.header__btn-wrapper {
+  margin-top: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__btn {
+  text-transform: none;
+}
