@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
+import { getAnalytics } from "firebase/analytics";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -20,12 +21,13 @@ let user;
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyC82DHO76H02snHe2pA_BAkInW7ri5E5yg',
-  authDomain: 'filmoteka-gr3.firebaseapp.com',
-  projectId: 'filmoteka-gr3',
-  storageBucket: 'filmoteka-gr3.appspot.com',
-  messagingSenderId: '600702873000',
-  appId: '1:600702873000:web:426877d5669c5a1671819d',
+  apiKey: "AIzaSyAwXObZpcAp1uILR4HQJMXwwu50FzgIP0E",
+  authDomain: "filmoteka-d1a57.firebaseapp.com",
+  projectId: "filmoteka-d1a57",
+  storageBucket: "filmoteka-d1a57.appspot.com",
+  messagingSenderId: "372882009932",
+  appId: "1:372882009932:web:5967a87f09a5b8098c29e9",
+  measurementId: "G-G8TWWHT34M"
 };
 
 // Initialize Firebase
