@@ -1,3 +1,3 @@
-// const logo = document.querySelector('.logo');
+const logo = document.querySelector('.logo');
 
-// logo.addEventListener('click', () => history.go(0));
+logo.addEventListener('click', () => history.go(0));
