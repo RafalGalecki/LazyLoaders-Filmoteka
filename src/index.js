@@ -6,7 +6,7 @@ import './js/fetch';
 import './js/modal-card';
 import './js/search-form';
 // import './js/genres_test'
-import './js/login';
+//import './js/login';
 import './js/login-modal';
 
 import './js/localStorage';
