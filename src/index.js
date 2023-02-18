@@ -1,6 +1,6 @@
 'use strict';
 
-// import './sass/components/_button.scss';
+import './sass/components/_button.scss';
 import './js/cards-home';
 import './js/fetch';
 import './js/modal-card';
