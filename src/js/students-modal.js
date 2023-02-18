@@ -9,9 +9,7 @@ const removingClass = () => {
   modalWindow.classList.add('is-hidden');
 };
 
-modalLink.addEventListener('click', () => {
-  modalWindow.classList.remove('is-hidden');
-  function showSlides() {
+function showSlides() {
     for (let i = 0; i < slides.length; i++) {
       slides[i].style.display = 'none';
     }
@@ -22,10 +20,13 @@ modalLink.addEventListener('click', () => {
     for (i = 0; i < navlinks.length; i++) {
       navlinks[i].className = navlinks[i].className.replace(' active', '');
     }
-    slides[slideIndex - 1].style.display = 'block';
+    slides[slideIndex - 1].style.display = 'flex';
     navlinks[slideIndex - 1].className += ' active';
-    timer = setTimeout(showSlides, 1000);
+    timer = setTimeout(showSlides, 2000);
   }
+
+modalLink.addEventListener('click', () => {
+  modalWindow.classList.remove('is-hidden');
   showSlides();
 });
 
