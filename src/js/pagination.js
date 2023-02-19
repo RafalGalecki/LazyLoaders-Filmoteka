@@ -9,7 +9,6 @@ import { refreshRendering } from './refreshrendering';
 
 const paginationNumbers = document.getElementById('pagination-numbers');
 
-
 // Main pagination funtion
 export function renderCardPaginator(totalPages, selectedPage = 1) {
   const paginationContainer = document.getElementById('pagination-numbers');
@@ -87,6 +86,11 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
 
   lastBtn.before(forwardEllipsisBtn);
 
+  // Hide ellipsis for less pages
+  if (totalPages < 4) {
+    forwardEllipsisBtn.classList.add('hidden');
+  }
+
   // LISTENER to page buttons-----------------------------
 
   paginationContainer.addEventListener('click', event => {
@@ -149,10 +153,7 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
     // Ellipsis buttons show/hide logic -------------------------
     const backwardEllipsisBtn = document.getElementById('prevStepButton');
     const forwardEllipsisBtn = document.getElementById('nextStepButton');
-    if (totalPages < 4) {
-      backwardEllipsisBtn.classList.add('hidden');
-      forwardEllipsisBtn.classList.add('hidden');
-}
+
     if (Number(event.target.value) <= 4) {
       backwardEllipsisBtn.classList.add('hidden');
 
