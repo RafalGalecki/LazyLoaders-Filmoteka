@@ -5,16 +5,22 @@ import { API_KEY, BASE_URL } from './fetch';
 import { searchInput } from './search-form';
 import { renderMovies } from './search-form';
 import { preloader } from './spinner';
-import { refreshRendering, refreshRenderingPagination } from './refreshrendering';
+import { refreshRendering } from './refreshrendering';
 
-const paginationNumbers = document.getElementById('pagination-numbers')
+const paginationNumbers = document.getElementById('pagination-numbers');
 
+
+// Main pagination funtion
 export function renderCardPaginator(totalPages, selectedPage = 1) {
   const paginationContainer = document.getElementById('pagination-numbers');
   paginationContainer.innerHTML = '';
 
-  // generate buttons according to a totalPages variable
+  // do not render if nothing to render
+  if (totalPages === 0) {
+    return;
+  }
 
+  // generate buttons according to a totalPages variable
   for (let i = 1; i <= totalPages; i++) {
     const pageBtn = document.createElement('button');
     pageBtn.setAttribute('type', 'button');
@@ -183,16 +189,15 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
       .get(urlForSearching)
       .then(function (response) {
         // handle success
-        preloader.classList.remove("hidden")
-        paginationNumbers.classList.add('hidden')
+        preloader.classList.remove('hidden');
+        paginationNumbers.classList.add('hidden');
         refreshRendering();
 
-
         setTimeout(() => {
-        renderMovies(response);
-          preloader.classList.add("hidden")
-          paginationNumbers.classList.remove('hidden')
-        }, 500)
+          renderMovies(response);
+          preloader.classList.add('hidden');
+          paginationNumbers.classList.remove('hidden');
+        }, 500);
       })
       .catch(function (error) {
         // handle error
