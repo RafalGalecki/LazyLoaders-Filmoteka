@@ -8,8 +8,8 @@
   display: flex;
   align-items: center;
   text-align: center;
-  color: #ffffff;
-  background-color: #ff6b08;
+  color: $secondary-text-cl;
+  background-color: $secondary-accent-cl;
   border-radius: 15px;
   padding: 3px 10px;
   justify-content: center;
@@ -19,9 +19,9 @@
 
   &:hover {
     background-color: transparent;
-    color: #ffffff;
-    border-color: #ff6b08;
-    box-shadow: inset 0.1px 0.1px 7px 0.1px #ff6b08;
+    color: $secondary-text-cl;
+    border-color: $secondary-accent-cl;
+    box-shadow: inset 0.1px 0.1px 7px 0.1px $secondary-accent-cl;
     
   }
 }
@@ -33,8 +33,8 @@
 
   &:hover {
     background-color: transparent;
-    color: #ff6b08;
-    border-color: #ff6b08;
+    color: $secondary-accent-cl;
+    border-color: $secondary-accent-cl;
   }
 }
 
@@ -56,15 +56,15 @@
   justify-content: center;
   padding: 5px 10px 5px;
   display: inline-block;
-  background-color: #ff6b08;
-  color: #ffffff;
+  background-color: $secondary-accent-cl;
+  color: $secondary-text-cl;
   border-radius: 15px;
 
   &:hover {
     background-color: transparent;
-    color: #000000;
-    border-color: #ff6b08;
-    box-shadow: inset 0.1px 0.1px 7px 0.1px #ff6b08;
+    color: $main-text-cl;
+    border-color: $secondary-accent-cl;
+    box-shadow: inset 0.1px 0.1px 7px 0.1px $secondary-accent-cl;
   }
 }
 
@@ -75,7 +75,7 @@
 
 .modal-login {
   position: absolute;
-  background-color: #f7f7f7;
+  background-color: $secondary-bg-cl;
   height: 400px;
   width: 280px;
   padding: 25px 20px 30px;
@@ -107,7 +107,7 @@
   margin-top: 50px;
   width: 250px;
   font-size: 12px;
-  color: black;
+  color: $main-text-cl;
 }
 
 .login-input {
@@ -117,7 +117,7 @@
   font-size: 14px;
   line-height: 1.142;
   display: flex;
-  color: black;
+  color: $main-text-cl;
   background: transparent;
   border: none;
   border-bottom: 0.5px solid #545454;
@@ -125,11 +125,11 @@
   transition: all 500ms cubic-bezier(0.38, 0.53, 0.8, 0.71);
 
   &:focus {
-    border-bottom: 0.5px solid #ff6b08;
+    border-bottom: 0.5px solid $secondary-accent-cl;
   }
 
   &:hover {
-    border-bottom: 0.5px solid #ff6b08;
+    border-bottom: 0.5px solid $secondary-accent-cl;
   }
 }
 

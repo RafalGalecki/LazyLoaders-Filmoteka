@@ -1,50 +1,52 @@
-@use '../utils' as *;
+@use '../utils/variables' as *;
 
 .dark-theme {
-  background-color: #333333;
-  color: #ffffff;
-  
-  
+  background-color: $night-main-bg-color;
+  color: $night-main-color;
 
-  & .item {
-    box-shadow: 0 0 10px 3px rgba(182, 182, 182, 0.6);
+  & .login-input,
+  .modal-card__list-details {
+    color: $night-main-color;
   }
+
+  & .pagination-button,
+  .modal-card__votes {
+    color: $night-second-color;
+  }
+
+  & .pagination-button,
+  .modal-card,
+  .modal__container,
+  .modal-login {
+    background-color: $night-main-bg-color;
+  }
+
+  & .activebtn {
+    background-color: $night-second-bg-color;
+  }
+
   & .footer {
-    background-color: #000000;
+    background-color: $night-thirth-bg-color;
   }
+
   & .pagination-button {
-    background-color: #333333;
-    box-shadow: #ffffff;
-    color: #ff6b08;
-    
+    box-shadow: $night-main-color;
     &:hover,
     &:focus {
-      background-color: #ff6b08;
-      color: #333333;
+      background-color: $night-second-bg-color;
+      color: $night-thirth-color;
     }
   }
 
- 
-
-  & .modal-card,
-    .modal__container,
-    .modal-login {
-    background-color: #333333;
+  & .activebtn {
+    color: $night-main-color;
+    box-shadow: $night-main-shadow-color;
+    &:hover,
+    &:focus {
+      background-color: $night-second-bg-color;
+      color: $night-thirth-color;
+    }
   }
-& .login-input {
-  color:#ffffff;
-}
-.activebtn {
-  background-color: #ff6b08;
-  box-shadow: #ff6b08;
-  color: #ffffff;
-
-  &:hover,
-  &:focus {
-    background-color: #ff6b08;
-    color: #333333;
-  }
-}
 }
 
 .toolbar {
@@ -61,7 +63,7 @@
 }
 
 .theme-switch__icon {
-  color: #ffffff;
+  color: $night-main-color;
   height: 15px;
   width: 15px;
 }
@@ -97,11 +99,10 @@
   height: 100%;
   color: transparent;
   user-select: none;
-  background-color: #333;
+  background-color: $night-main-bg-color;
   border-radius: inherit;
   z-index: 1;
   cursor: pointer;
-  
 }
 
 .theme-switch__marker {
@@ -114,11 +115,10 @@
   pointer-events: none;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   transform: translateX(3px);
-  transition: transform 250ms var(--timing-function);
 }
 
 .theme-switch__toggle:checked + .theme-switch__track {
-  background-color: #ff6b08;
+  background-color: $night-main-shadow-color;
 }
 
 .theme-switch__toggle:checked ~ .theme-switch__marker {
@@ -127,5 +127,5 @@
 
 .theme-switch__toggle:focus + .theme-switch__track,
 .theme-switch__toggle:active + .theme-switch__track {
-  box-shadow: 0 0 0 3px #ff6b08;
+  box-shadow: 0 0 0 3px $night-main-shadow-color;
 }
