@@ -9,7 +9,6 @@ import { refreshRendering } from './refreshrendering';
 
 const paginationNumbers = document.getElementById('pagination-numbers');
 
-
 // Main pagination funtion
 export function renderCardPaginator(totalPages, selectedPage = 1) {
   const paginationContainer = document.getElementById('pagination-numbers');
@@ -86,6 +85,11 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
   forwardEllipsisBtn.innerHTML = '...';
 
   lastBtn.before(forwardEllipsisBtn);
+
+  // Hide ellipsis for less pages
+  if (totalPages < 4) {
+    forwardEllipsisBtn.classList.add('hidden');
+  }
 
   // LISTENER to page buttons-----------------------------
 
