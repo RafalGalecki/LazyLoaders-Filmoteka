@@ -10,42 +10,88 @@
 
   border-radius: 5px;
   cursor: pointer;
+  
+  &__addToWatched {
+    border: 1px solid #ff6b01;
+    background: #ff6b01;
+    color: #ffffff;
+  }
+  
+  &__addToQue {
+    background: #ffffff;
+  }
+  
+  &--close {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    transform: rotate(0) ;
+    transition: transform .5s ease;
+  }
+  
+  &--close:hover {
+    transform: rotate(-90deg);
+  }
+  
+  &__icon-close {
+    width: 30px;
+    height: 30px;
+    stroke: #000;
+  }
+
+  &--play {
+    position: absolute;
+    width:40px;
+    height:40px;
+    padding: 4px;
+    margin-top: 10px;
+    // margin: 0;
+    // left: calc(50% / 30%);
+    left: calc(7vw + 10px);
+    
+    // top: 50%;
+    align-self: baseline;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // z-index: 1;
+  }
+  
+&__icon-play {
+  width:50px;
+  height:50px;
+  fill:green;
 }
 
-.btn__addToWatched {
-  border: 1px solid #ff6b01;
-  background: #ff6b01;
-  color: #ffffff;
 }
 
-.btn__addToQue {
-  background: #ffffff;
+@media screen and (min-width: 400px){
+  .btn--play {
+    left: 30px;
+  }
 }
 
-.btn--close {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  font-size: 14px;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-  border: none;
-  transform: rotate(0);
-  transition: transform 0.5s ease;
+@media screen and (min-width: 600px){
+  .btn--play {
+    left: 40px;
+  }
 }
 
-.btn--close:hover {
-  transform: rotate(-90deg);
-}
-
-.btn__icon-close {
-  width: 30px;
-  height: 30px;
-  stroke: #000;
+@media screen and (min-width: 650px){
+  .btn--play {
+    left: 50px;
+  }
 }

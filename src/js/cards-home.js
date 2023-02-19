@@ -4,7 +4,6 @@ import { preloader, delayForSpinner } from './spinner';
 
 export const moviesContainer = document.querySelector('.cards-container');
 
-
 export function loadMovies() {
   //get genres for movies
   getGenres().then(el => {
@@ -13,9 +12,6 @@ export function loadMovies() {
     //get movies with genres description
     getInitialMovies().then(res => {
       const initialMovies = res.data.results;
-
-      console.log(res.data.results);
-
       generateCards(initialMovies, genres);
     });
   });
@@ -40,7 +36,6 @@ export function loadMovies() {
 
   //create single movie card element
   function createMovieCard(singleMovie, genresDesc) {
-
     let movieWrapper = document.createElement('div');
     movieWrapper.classList.add('movie-card');
     movieWrapper.setAttribute('id', singleMovie.id);
@@ -62,10 +57,14 @@ export function loadMovies() {
     movieInfo.classList.add('movie-card__info');
 
     if (genresDesc.length > 3) {
-      genresDesc = genresDesc.slice(0, 2)
-      movieInfo.textContent = `${genresDesc.join(', ') + ', Other'} | ${singleMovie.release_date.slice(0, 4)}`;
+      genresDesc = genresDesc.slice(0, 2);
+      movieInfo.textContent = `${
+        genresDesc.join(', ') + ', Other'
+      } | ${singleMovie.release_date.slice(0, 4)}`;
     } else {
-      movieInfo.textContent = `${genresDesc.join(', ')} | ${singleMovie.release_date.slice(0, 4)}`;
+      movieInfo.textContent = `${genresDesc.join(
+        ', '
+      )} | ${singleMovie.release_date.slice(0, 4)}`;
     }
 
     let movieRating = document.createElement('span');
@@ -76,11 +75,9 @@ export function loadMovies() {
     moviesContainer.appendChild(movieWrapper);
     movieWrapper.append(moviePicture, movieTitle, movieInfo, movieRating);
   }
-
 }
 
-document.addEventListener('DOMContentLoaded', delayForSpinner(loadMovies))
-
+document.addEventListener('DOMContentLoaded', delayForSpinner(loadMovies));
 
 /* const delay = () => {
   setTimeout (() => {
