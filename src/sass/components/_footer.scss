@@ -16,7 +16,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
   }
 
   &__text {
@@ -25,6 +25,7 @@
     color: #545454;
     font-size: 14px;
     line-height: 1.17;
+    gap: 4px;
   }
 
   &__link {
@@ -46,7 +47,6 @@
 @media screen and (min-width: 768px) {
   .footer {
     height: 77px;
-
     &__container {
       flex-direction: row;
     }
