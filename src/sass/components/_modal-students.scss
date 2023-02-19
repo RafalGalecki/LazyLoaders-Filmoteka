@@ -33,7 +33,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
   }
   &__nav {
     text-align: center;
@@ -60,7 +60,7 @@
     width: 80%;
     border-radius: 2%;
     transition: ease-in-out 500ms;
-    max-height: 600px;
+    max-height: 450px;
   }
 
   &__description {
@@ -74,6 +74,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+  }
+  &__name{
+    position: absolute;
+    top: 180px;
+    font-family: 'Roboto';
+    font-size: 34px;
   }
 }
 
@@ -85,7 +92,7 @@
 
 .fade {
   animation-name: fade;
-  animation-duration: 2s;
+  animation-duration: 1s;
 }
 
 @keyframes fade {
