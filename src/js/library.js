@@ -1,5 +1,5 @@
- import '../sass/components/_header-library.scss';
- import '../sass/components/_header-home.scss';
+import '../sass/components/_header-library.scss';
+import '../sass/components/_header-home.scss';
 
 import { getGenres, getMovieDetails } from './fetch';
 import { loadMovies } from './cards-home';
@@ -34,23 +34,33 @@ const headerHome = document.querySelector('.header-home');
 const headerLibrary = document.querySelector('.header-library');
 const cardsLibraryWatched = document.querySelector('.cards-watched-container');
 
+const libraryEmptyTempl = document.querySelector('.library-empty');
+const templ = libraryEmptyTempl.content.cloneNode(true);
+const templCard = templ.querySelector('.content-library__card');
+
+
 export { watchedParsed, queueParsed, watchedMoviesContainer, headerLibrary };
 
 headerLibrary.addEventListener('click', libraryHidden);
 headerHome.addEventListener('click', homeHidden);
 
-function homeHidden(event) {
+export function homeHidden(event) {
   if (event.target.nodeName !== 'A') {
     return;
   }
 
   if (event.target.classList.contains('js-library')) {
-    renderWatchedMovies(getWatchedMovies[0]);
-    //refreshRendering();
     headerHome.classList.add('visually-hidden');
     moviesContainer.classList.add('visually-hidden');
     headerLibrary.classList.remove('visually-hidden');
     cardsLibraryWatched.classList.remove('visually-hidden');
+
+    if (watchedParsed.length === 0) {
+      watchedMoviesContainer.appendChild(templCard);
+    }
+
+    renderStorageMovies(getWatchedMovies[0]);
+
   }
 }
 
@@ -93,12 +103,12 @@ export const getQueueMovies = queueParsed.map(el => {
   return queueMovies;
 });
 
-export function renderWatchedMovies(response) {
+export function renderStorageMovies(response) {
   refreshRendering();
   //get genres for movies
   getGenres().then(el => {
     const genres = el;
-
+    
     generateCards(response);
     //get movies with genres description
     // getInitialMovies().then(res => {
