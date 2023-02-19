@@ -7,7 +7,6 @@ import { saveToQue } from './localStorage';
 import { movieID } from './fetch';
 import debounce from 'lodash.debounce';
 
-
 const modal = document.querySelector('.modal-card');
 const btnClose = modal.querySelector('.btn--close');
 let variablesCSS = document.querySelector(':root');
@@ -26,8 +25,12 @@ export const createModalCard = el => {
   );
   modalImage.setAttribute(
     'sizes',
-   '(min-width: 1024px) 500px, (min-width: 768px) 300px, 100vw'
+    '(min-width: 1024px) 500px, (min-width: 768px) 300px, 100vw'
   );
+  // modalImage.setAttribute(
+  //   'onerror',
+  //   "src = 'https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg'"
+  // );
   modalImage.setAttribute('alt', `${el.title}`);
 
   const modalHeader = document.createElement('h2');
@@ -60,7 +63,7 @@ export const createModalCard = el => {
 
   let movieInfoTypesData = [
     `${el.vote_count}`,
-    `${el.popularity}`,
+    `${el.popularity.toFixed(0)}`,
     `${el.original_title}`,
     `${genresDesc.join(', ')}`,
   ];
@@ -176,14 +179,30 @@ const displayMovieInfo = async e => {
     createModalCard(el);
     modal.parentElement.classList.toggle('is-hidden');
     setGrowElement();
+
+    //check if image is loaded
+    let imgsrc = modal.children[2];
+
+    if (imgsrc.getAttribute('src').endsWith('null')) {
+      imgsrc.removeAttribute('srcset');
+      imgsrc.setAttribute(
+        'src',
+        'https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg'
+      );
+      modal.children[0].classList.add('is-hidden');
+    }
   });
 };
 
 function hideModal() {
   modal.parentElement.classList.add('is-hidden');
-  modal.replaceChildren();
-  //   modal.removeEventListener('click', hideModal);
-  //   window.removeEventListener('keydown',hideModal)
+
+  //select elements to be removed
+  let imgChild = modal.children[2];
+  let descChild = modal.children[3];
+
+  modal.removeChild(imgChild);
+  modal.removeChild(descChild);
 }
 
 function setGrowElement() {
@@ -194,7 +213,7 @@ function setGrowElement() {
   let listGenresHeight = listDetails[1].children[3].offsetHeight;
 
   //line height 16 for division
-  if (((listTitleHeight) > 16) & (listGenresHeight !== 16)) {
+  if (listTitleHeight > 16 && listGenresHeight !== 16) {
     variablesCSS.style.setProperty(
       '--grow_title',
       Math.floor(listTitleHeight / 16)
@@ -213,7 +232,7 @@ window.addEventListener(
   'resize',
   debounce(() => {
     //start if modal content exist
-    if (modal.childNodes.length > 3) {
+    if (modal.childNodes.length > 5) {
       setGrowElement();
     }
   }, 100)
