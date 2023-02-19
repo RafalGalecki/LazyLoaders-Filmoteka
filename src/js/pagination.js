@@ -149,7 +149,10 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
     // Ellipsis buttons show/hide logic -------------------------
     const backwardEllipsisBtn = document.getElementById('prevStepButton');
     const forwardEllipsisBtn = document.getElementById('nextStepButton');
-
+    if (totalPages < 4) {
+      backwardEllipsisBtn.classList.add('hidden');
+      forwardEllipsisBtn.classList.add('hidden');
+}
     if (Number(event.target.value) <= 4) {
       backwardEllipsisBtn.classList.add('hidden');
 
