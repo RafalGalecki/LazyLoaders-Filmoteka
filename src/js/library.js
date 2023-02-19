@@ -38,16 +38,13 @@ const libraryEmptyTempl = document.querySelector('.library-empty');
 const templ = libraryEmptyTempl.content.cloneNode(true);
 const templCard = templ.querySelector('.content-library__card');
 
-const modalBtnAddWatch = document.querySelector('.btn__addToWatched');
-const modalBtnAddQue = document.querySelector('.btn__addToQue');
-
 
 export { watchedParsed, queueParsed, watchedMoviesContainer, headerLibrary };
 
 headerLibrary.addEventListener('click', libraryHidden);
 headerHome.addEventListener('click', homeHidden);
 
-function homeHidden(event) {
+export function homeHidden(event) {
   if (event.target.nodeName !== 'A') {
     return;
   }
