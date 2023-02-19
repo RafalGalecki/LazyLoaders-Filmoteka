@@ -9,6 +9,7 @@ import './js/search-form';
 
 import './js/login';
 import './js/login-modal';
+import './js/day-night';
 
 import './js/localStorage';
 import './js/library';

@@ -5,18 +5,19 @@
             <div class="menu">
                 <div class="logo">
                     <a href="#"><svg class="logo__icon" width="24px" height="24px">
-                        <use href="./images/icons.svg#icon-logo-icon"></use>
-                    </svg></a>
+                            <use href="./images/icons.svg#icon-logo-icon"></use>
+                        </svg></a>
                     <a href="#" class="link logo__text">Filmoteka</a>
                 </div>
                 <nav>
                     <ul class="nav__list">
 
-                        <li class="nav__item"><a href="#" class="link nav__link nav__link--active" >home</a></li>
+                        <li class="nav__item"><a href="#" class="link nav__link nav__link--active">home</a></li>
 
-                        <li class="nav__item"><a  id="library" href="#" class="link nav__link js-library" >my library</a></li>
+                        <li class="nav__item"><a id="library" href="#" class="link nav__link js-library">my library</a>
+                        </li>
                         <button class="log-in" type="submit" login-open>Sign in</button>
-                        
+
                         <button class="log-out is-hidden" type="submit">Log Out</button>
                     </ul>
                 </nav>
@@ -24,15 +25,32 @@
             <form class="search-form" id="search-form">
                 <input type="text" name="searchQuery" autocomplete="off" placeholder="Search movies..." />
 
-                
-                
+
+
 
                 <button type="submit"><svg class="search-form__icon" width="12px" height="12px">
-                    <use href="./images/icons.svg#icon-search-icon"></use>
-                </svg></button>
+                        <use href="./images/icons.svg#icon-search-icon"></use>
+                    </svg></button>
 
             </form>
             <p class="warning"></p>
+        </div>
+        <div class="toolbar">
+            <div class="theme-switch">
+                <svg class="theme-switch__icon">
+                    <use href="./images/svg/sprite.svg#sun"></use>
+                </svg>
+
+                <div class="theme-switch__control">
+                    <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle" />
+                    <label class="theme-switch__track" for="theme-switch-toggle"> </label>
+                    <div class="theme-switch__marker"></div>
+                </div>
+
+                <svg class="theme-switch__icon">
+                    <use href="./images/svg/sprite.svg#moon"></use>
+                </svg>
+            </div>
         </div>
     </div>
 </header>
