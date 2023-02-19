@@ -6,6 +6,9 @@ import { loadMovies } from './cards-home';
 import { refreshRendering } from './refreshrendering';
 import { moviesContainer } from './cards-home';
 import Notiflix from 'notiflix';
+import { preloader } from './spinner';
+import { refreshRenderingPagination } from './refreshrendering';
+
 
 const watchedMoviesContainer = document.querySelector(
   '.cards-watched-container'
@@ -50,6 +53,10 @@ export function homeHidden(event) {
   }
 
   if (event.target.classList.contains('js-library')) {
+    preloader.classList.remove("hidden")
+    refreshRendering();
+    refreshRenderingPagination()
+
     headerHome.classList.add('visually-hidden');
     moviesContainer.classList.add('visually-hidden');
     headerLibrary.classList.remove('visually-hidden');
@@ -58,8 +65,10 @@ export function homeHidden(event) {
     if (watchedParsed.length === 0) {
       watchedMoviesContainer.appendChild(templCard);
     }
-
-    renderStorageMovies(getWatchedMovies[0]);
+    setTimeout(() => {
+      renderStorageMovies(getWatchedMovies[0]);
+        preloader.classList.add("hidden")
+      }, 500)
 
   }
 }
@@ -70,7 +79,12 @@ function libraryHidden(event) {
   }
 
   if (event.target.classList.contains('js-home-page')) {
-    loadMovies();
+    preloader.classList.remove("hidden")
+    refreshRendering();
+    setTimeout(() => {
+      loadMovies();
+        preloader.classList.add("hidden")
+      }, 500)
     headerHome.classList.remove('visually-hidden');
     moviesContainer.classList.remove('visually-hidden');
     headerLibrary.classList.add('visually-hidden');

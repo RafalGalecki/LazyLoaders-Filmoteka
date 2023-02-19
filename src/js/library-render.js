@@ -25,15 +25,23 @@ function libraryEvents(event) {
   if (event.target.classList.contains('js-btn-watched')) {
     libBtnWatched.classList.add('btn-lib-js-active');
     libBtnQueue.classList.remove('btn-lib-js-active');
-
-    renderStorageMovies(getWatchedMovies[0]);
+    preloader.classList.remove("hidden")
+    refreshRendering();
+    setTimeout(() => {
+      renderStorageMovies(getWatchedMovies[0]);
+        preloader.classList.add("hidden")
+      }, 500)
   }
 
   if (event.target.classList.contains('js-btn-queue')) {
     libBtnQueue.classList.add('btn-lib-js-active');
     libBtnWatched.classList.remove('btn-lib-js-active');
-
-    renderStorageMovies(getQueueMovies[0]);
+    preloader.classList.remove("hidden")
+    refreshRendering();
+    setTimeout(() => {
+      renderStorageMovies(getQueueMovies[0]);
+        preloader.classList.add("hidden")
+      }, 500)
   }
 }
 
