@@ -3,6 +3,8 @@
 .dark-theme {
   background-color: #333333;
   color: #ffffff;
+  
+  
 
   & .item {
     box-shadow: 0 0 10px 3px rgba(182, 182, 182, 0.6);
@@ -10,11 +12,10 @@
   & .footer {
     background-color: #000000;
   }
-  & .pagination-button,
-    .activebtn {
+  & .pagination-button {
     background-color: #333333;
-    box-shadow: #ff6b08;
-    color: #ffffff;
+    box-shadow: #ffffff;
+    color: #ff6b08;
     
     &:hover,
     &:focus {
@@ -23,18 +24,29 @@
     }
   }
 
-  & .movie-card{
-    background-color: #000000;
-
-  }
+ 
 
   & .modal-card,
     .modal__container,
     .modal-login {
     background-color: #333333;
   }
-
+& .login-input {
+  color:#ffffff;
 }
+.activebtn {
+  background-color: #ff6b08;
+  box-shadow: #ff6b08;
+  color: #ffffff;
+
+  &:hover,
+  &:focus {
+    background-color: #ff6b08;
+    color: #333333;
+  }
+}
+}
+
 .toolbar {
   display: flex;
   justify-content: flex-end;
@@ -45,6 +57,7 @@
 .theme-switch {
   display: flex;
   align-items: center;
+  position: sticky;
 }
 
 .theme-switch__icon {
@@ -88,6 +101,7 @@
   border-radius: inherit;
   z-index: 1;
   cursor: pointer;
+  
 }
 
 .theme-switch__marker {
