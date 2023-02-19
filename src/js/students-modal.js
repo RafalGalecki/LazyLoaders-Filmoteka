@@ -17,13 +17,14 @@ function showSlides() {
     if (slideIndex > slides.length) {
       slideIndex = 1;
     }
-    for (i = 0; i < navlinks.length; i++) {
-      navlinks[i].className = navlinks[i].className.replace(' active', '');
+    for (let j = 0; j < navlinks.length; j++) {
+      navlinks[j].className = navlinks[j].className.replace(' active', '');
     }
     slides[slideIndex - 1].style.display = 'flex';
     navlinks[slideIndex - 1].className += ' active';
-    timer = setTimeout(showSlides, 2000);
-  }
+    timer = setTimeout(showSlides, 1000);
+}
+  
 
 modalLink.addEventListener('click', () => {
   modalWindow.classList.remove('is-hidden');
