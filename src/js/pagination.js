@@ -144,19 +144,19 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
     const backwardEllipsisBtn = document.getElementById('prevStepButton');
     const forwardEllipsisBtn = document.getElementById('nextStepButton');
 
-    if (Number(event.target.value) < 4) {
+    if (Number(event.target.value) <= 4) {
       backwardEllipsisBtn.classList.add('hidden');
 
       forwardEllipsisBtn.classList.remove('hidden');
     }
     if (
-      Number(event.target.value) >= 4 &&
-      Number(event.target.value) <= totalPages - 4
+      Number(event.target.value) > 4 &&
+      Number(event.target.value) < totalPages - 4
     ) {
       backwardEllipsisBtn.classList.remove('hidden');
       forwardEllipsisBtn.classList.remove('hidden');
     }
-    if (Number(event.target.value) > totalPages - 4) {
+    if (Number(event.target.value) >= totalPages - 4) {
       forwardEllipsisBtn.classList.add('hidden');
 
       backwardEllipsisBtn.classList.remove('hidden');
