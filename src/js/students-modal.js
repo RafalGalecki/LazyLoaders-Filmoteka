@@ -23,7 +23,8 @@ function showSlides() {
     slides[slideIndex - 1].style.display = 'flex';
     navlinks[slideIndex - 1].className += ' active';
     timer = setTimeout(showSlides, 2000);
-  }
+}
+  
 
 modalLink.addEventListener('click', () => {
   modalWindow.classList.remove('is-hidden');
