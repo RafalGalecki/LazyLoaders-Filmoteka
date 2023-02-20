@@ -21,3 +21,5 @@ import './js/refreshPage';
 import './js/spinner';
 import './js/refreshrendering';
 import './js/pagination';
+import './js/to-top';
+
