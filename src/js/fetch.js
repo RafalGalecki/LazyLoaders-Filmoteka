@@ -66,6 +66,8 @@ export const getInitialMovies = async () => {
     .get(urlForInitialMovies)
     .then(function (response) {
       // handle success
+      renderMovies(response);
+      renderCardPaginator(response.data.total_pages, response.data.page);
       return response;
     })
     .catch(function (error) {
