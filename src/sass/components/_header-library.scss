@@ -5,7 +5,8 @@
 .header-library {
   position: relative;
   background-image: url('/src/images/Rectangle-1x-desktop.jpg');
-  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   max-width: 100%;
   height: 230px;
   margin: 0 auto;
