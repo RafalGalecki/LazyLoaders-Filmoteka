@@ -18,6 +18,7 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
   if (totalPages === 0) {
     return;
   }
+  //totalPages <= 500 ? totalPages : totalPages = 500;
 
   // generate buttons according to a totalPages variable
   for (let i = 1; i <= totalPages; i++) {
@@ -97,10 +98,6 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
     event.preventDefault();
 
     // Prev and Next buttons logic --------------------------
-
-    // const prevBtn = document.getElementById('prevButton');
-    // const nextBtn = document.getElementById('nextButton');
-
     // handle 'previous' button, one click = one page backward
     if (event.target.id === 'prevButton') {
       if (selectedPage === 1) {
@@ -148,6 +145,7 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
     // Selected page variable declaration----------------------------
     selectedPage = Number(event.target.value);
 
+    // Function to show and hide page buttons around the selected
     renderPageButtons(selectedPage, totalPages);
 
     // Ellipsis buttons show/hide logic -------------------------
@@ -171,16 +169,25 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
 
       backwardEllipsisBtn.classList.remove('hidden');
     }
-    // Preloader ------------------------------
+    // This unhide the last button
+    const lastPageButton = document.getElementById(`page${totalPages}`);
+    if (lastPageButton) {
+      lastPageButton.classList.remove('hidden');
+    }
 
     // set active page ---------------------------
 
     setActivePage(selectedPage);
 
-    // create URL with selected page for searching -------
+    // This build proper URL for defoult popular movies searching
+    // or by inputed keywords
     const urlForSearching = ''.concat(
       BASE_URL,
-      'search/movie?api_key=',
+      `${
+        searchInput === undefined
+          ? 'trending/movie/day?api_key='
+          : 'search/movie?api_key='
+      }`,
       API_KEY,
       '&query=',
       searchInput,
@@ -239,7 +246,9 @@ function limitDisplayedButtons(totalPages) {
 function renderPageButtons(selectedPage, totalPages) {
   for (let i = 2; i < totalPages; i++) {
     const hideButton = document.getElementById(`page${i}`);
-    hideButton.classList.add('hidden');
+    if (hideButton) {
+      hideButton.classList.add('hidden');
+    }
   }
   for (let i = selectedPage - 2; i <= selectedPage + 2; i++) {
     const showButton = document.getElementById(`page${i}`);
