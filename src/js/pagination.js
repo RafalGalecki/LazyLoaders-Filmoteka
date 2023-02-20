@@ -7,6 +7,7 @@ import { renderMovies } from './search-form';
 import { preloader } from './spinner';
 import { refreshRendering } from './refreshrendering';
 
+// Div container fo page buttons
 const paginationNumbers = document.getElementById('pagination-numbers');
 
 // Main pagination funtion
@@ -96,7 +97,7 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
 
   paginationContainer.addEventListener('click', event => {
     event.preventDefault();
-
+    console.log('selected before arrows', selectedPage);
     // Prev and Next buttons logic --------------------------
     // handle 'previous' button, one click = one page backward
     if (event.target.id === 'prevButton') {
@@ -118,7 +119,7 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
         nextBtn.setAttribute('value', `${selectedPage}`);
       }
     }
-
+    console.log('selected after arrows before ellipsis', selectedPage);
     // Ellipsis 10-page step logic
     // Step back
     if (event.target.id === 'prevStepButton') {
@@ -142,12 +143,13 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
         forwardEllipsisBtn.setAttribute('value', `${selectedPage}`);
       }
     }
+    console.log('selected after ellipsis', selectedPage);
     // Selected page variable declaration----------------------------
     selectedPage = Number(event.target.value);
-
+    console.log('selected after binding with value', selectedPage);
     // Function to show and hide page buttons around the selected
     renderPageButtons(selectedPage, totalPages);
-
+    console.log('selected after rendering', selectedPage);
     // Ellipsis buttons show/hide logic -------------------------
     const backwardEllipsisBtn = document.getElementById('prevStepButton');
     const forwardEllipsisBtn = document.getElementById('nextStepButton');
@@ -174,11 +176,10 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
     if (lastPageButton) {
       lastPageButton.classList.remove('hidden');
     }
-
-    // set active page ---------------------------
-
+    console.log('selected before setactive', selectedPage);
+    // set active page --------------------------
     setActivePage(selectedPage);
-
+    console.log('selected after setactive', selectedPage);
     // This build proper URL for defoult popular movies searching
     // or by inputed keywords
     const urlForSearching = ''.concat(
@@ -217,19 +218,24 @@ export function renderCardPaginator(totalPages, selectedPage = 1) {
           'We are sorry, but getting data is impossible in that moment'
         );
       });
+    console.log('selected after fetch', selectedPage);
   });
+  console.log('selected at the end', selectedPage);
 }
 
 // Page buttons logic
 // Set class activebtn to a selected page for indicating
 function setActivePage(currentPage) {
   const elementActive = document.querySelector('.activebtn');
-  elementActive.classList.remove('activebtn');
+  if (elementActive) {
+    elementActive.classList.remove('activebtn');
 
-  elementActive.classList.add('visible');
+    elementActive.classList.add('visible');
+  }
   const activeBtn = document.getElementById(`page${currentPage}`);
-
-  activeBtn.classList.add('activebtn');
+  if (activeBtn) {
+    activeBtn.classList.add('activebtn');
+  }
 }
 
 // Limit page buttons displayed on load ---------------
