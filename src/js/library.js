@@ -74,10 +74,14 @@ export function homeHidden(event) {
 }
 
 function libraryHidden(event) {
-  if (event.target.nodeName !== 'A') {
-    return;
-  }
+  console.log(event.target);
+  
+  // commented code below to enable click on logo 'svg' to return to homepage
+  // if (event.target.nodeName !== 'A') {
+  //   return;
+  // }
 
+  event.preventDefault();
   if (event.target.classList.contains('js-home-page')) {
     preloader.classList.remove("hidden")
     refreshRendering();
