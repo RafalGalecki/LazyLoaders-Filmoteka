@@ -61,3 +61,16 @@ button {
     padding-bottom: 77px; //footer height - to position footer correctly on the page
   }
 }
+
+[data-modal] {
+  animation: modal-open 0.25s;
+}
+
+@keyframes modal-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

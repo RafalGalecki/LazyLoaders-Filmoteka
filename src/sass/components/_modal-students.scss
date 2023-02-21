@@ -14,15 +14,14 @@
 
   &__container {
     width: 50%;
+    max-width: 900px;
     height: 75%;
-    background-color: #f7f7f7;
+    background-color: $secondary-bg-cl;
     margin: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-around;
     opacity: 1;
-    gap: 15px;
-    padding-top: 30px;
     min-width: 240px;
   }
 
@@ -81,7 +80,7 @@
     font-size: 22px;
     display: flex;
     min-width: 200px;
-    gap: 40px;
+    gap: 30px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -116,13 +115,10 @@
 @media screen and (min-width: 768px) {
   .modal {
     &__name {
-      font-family: 'Mynerve';
-      font-size: 34px;
-      display: flex;
-      min-width: 200px;
-      gap: 30px;
+      font-size: 32px;
       flex-direction: row;
     }
+
     &__spin {
       position: relative;
       top: 0px;
@@ -132,8 +128,37 @@
       max-height: 300px;
     }
 
-    &__container {
-      gap: 30px;
+    &__slide {
+      gap: 20px;
+    }
+
+    &__navlink {
+      margin: 0 10px 0 10px;
+      height: 20px;
+      width: 20px;
+    }
+
+    &__description {
+      font-size: 22px;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .modal {
+    &__name {
+      gap: 40px;
+      font-size: 44px;
+
+    }
+
+    &__spin {
+      position: relative;
+      top: 0px;
+      left: 0px;
+    }
+    &__image {
+      max-height: 400px;
     }
 
     &__slide {
@@ -142,6 +167,8 @@
 
     &__navlink {
       margin: 0 10px 0 10px;
+      height: 20px;
+      width: 20px;
     }
 
     &__description {
