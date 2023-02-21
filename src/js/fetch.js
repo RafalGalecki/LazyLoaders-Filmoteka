@@ -3,6 +3,7 @@ import Notiflix from 'notiflix';
 import { renderMovies } from './search-form';
 import { loadMovies } from './cards-home';
 import { renderCardPaginator } from './pagination';
+import { paginatorSearch } from './paginator-search';
 import { refreshRendering } from './refreshrendering';
 
 const warning = document.querySelector('.warning');
@@ -32,15 +33,14 @@ export const getSearchedMovies = async (searchInput, page = 1) => {
       if (response.data.results.length !== 0) {
         warning.textContent = '';
         renderMovies(response);
-        renderCardPaginator(response.data.total_pages, response.data.page);
+        paginatorSearch(response.data.total_pages, response.data.page);
+        console.log('FETCH!!!!!!!!!!!!!');
         return response;
-
       } else {
         // if no results found - show warning
-        warning.textContent = 'Search result not successful. Enter the correct movie name and try again.';
-       
+        warning.textContent =
+          'Search result not successful. Enter the correct movie name and try again.';
       }
-
     })
     .catch(function (error) {
       // handle error
@@ -144,7 +144,6 @@ export const getMovieDetails = async movie_id => {
 
       movieID = response.data.id;
 
-
       return response.data;
     })
     .catch(function (error) {
@@ -157,5 +156,3 @@ export const getMovieDetails = async movie_id => {
 
   return response;
 };
-
-
