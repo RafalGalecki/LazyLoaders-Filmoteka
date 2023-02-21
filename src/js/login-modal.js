@@ -1,8 +1,8 @@
 export default (() => {
   const refs = {
-    openModalBtn: document.querySelector('[login-open]'),
-    closeModalBtn: document.querySelector('[login-close]'),
-    modal: document.querySelector('[login-modal]'),
+    openModalBtn: document.querySelector('.login-open'),
+    closeModalBtn: document.querySelector('.login-close'),
+    modal: document.querySelector('.login-modal'),
   };
 
   refs.openModalBtn.addEventListener('click', toggleModal);

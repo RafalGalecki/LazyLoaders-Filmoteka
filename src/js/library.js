@@ -5,14 +5,23 @@ import { getGenres, getMovieDetails } from './fetch';
 import { loadMovies } from './cards-home';
 import { refreshRendering } from './refreshrendering';
 import { moviesContainer } from './cards-home';
-import Notiflix from 'notiflix';
+
 import { preloader } from './spinner';
 import { refreshRenderingPagination } from './refreshrendering';
-
+import { libraryMovies, reviewMovies } from './library-render';
 
 const watchedMoviesContainer = document.querySelector(
   '.cards-watched-container'
 );
+
+const headerHome = document.querySelector('.header-home');
+const headerLibrary = document.querySelector('.header-library');
+const myLibrary = headerLibrary.querySelector('.js-library');
+const cardsLibraryWatched = document.querySelector('.cards-watched-container');
+
+const libraryEmptyTempl = document.querySelector('.library-empty');
+const templ = libraryEmptyTempl.content.cloneNode(true);
+const templCard = templ.querySelector('.content-library__card');
 
 const LOCALSTORAGE_WATCHED = 'watched';
 const LOCALSTORAGE_QUE = 'que';
@@ -20,9 +29,6 @@ const LOCALSTORAGE_QUE = 'que';
 const watched = localStorage.getItem(LOCALSTORAGE_WATCHED) || '';
 const queue = localStorage.getItem(LOCALSTORAGE_QUE) || '';
 
-//const watchedParsed = JSON.parse(watched);
-//const queueParsed = JSON.parse(queue);
-// TEST - poprawka Michala
 let watchedParsed = [];
 if (watched) {
   watchedParsed = JSON.parse(watched);
@@ -30,19 +36,15 @@ if (watched) {
 let queueParsed = [];
 if (queue) {
   queueParsed = JSON.parse(queue);
+}
+
+export {
+  watchedParsed,
+  queueParsed,
+  watchedMoviesContainer,
+  headerLibrary,
+  templCard,
 };
-// koniec poprawki
-
-const headerHome = document.querySelector('.header-home');
-const headerLibrary = document.querySelector('.header-library');
-const cardsLibraryWatched = document.querySelector('.cards-watched-container');
-
-const libraryEmptyTempl = document.querySelector('.library-empty');
-const templ = libraryEmptyTempl.content.cloneNode(true);
-const templCard = templ.querySelector('.content-library__card');
-
-
-export { watchedParsed, queueParsed, watchedMoviesContainer, headerLibrary };
 
 headerLibrary.addEventListener('click', libraryHidden);
 headerHome.addEventListener('click', homeHidden);
@@ -53,42 +55,39 @@ export function homeHidden(event) {
   }
 
   if (event.target.classList.contains('js-library')) {
-    preloader.classList.remove("hidden")
+    preloader.classList.remove('hidden');
     refreshRendering();
-    refreshRenderingPagination()
+    refreshRenderingPagination();
 
     headerHome.classList.add('visually-hidden');
     moviesContainer.classList.add('visually-hidden');
     headerLibrary.classList.remove('visually-hidden');
     cardsLibraryWatched.classList.remove('visually-hidden');
 
-    if (watchedParsed.length === 0) {
-      watchedMoviesContainer.appendChild(templCard);
-    }
     setTimeout(() => {
-      renderStorageMovies(getWatchedMovies[0]);
-        preloader.classList.add("hidden")
-      }, 500)
-
+      if (getWatchedMovies[0]) {
+        renderStorageMovies(getWatchedMovies[0]);
+      }
+      if (getQueueMovies[0]) {
+        renderStorageMovies(getQueueMovies[0]);
+      }
+      if (getQueueMovies.length === 0 && getWatchedMovies.length === 0) {
+        watchedMoviesContainer.appendChild(templCard);
+      }
+      preloader.classList.add('hidden');
+    }, 500);
   }
 }
 
 function libraryHidden(event) {
-  console.log(event.target);
-  
-  // commented code below to enable click on logo 'svg' to return to homepage
-  // if (event.target.nodeName !== 'A') {
-  //   return;
-  // }
-
   event.preventDefault();
   if (event.target.classList.contains('js-home-page')) {
-    preloader.classList.remove("hidden")
+    preloader.classList.remove('hidden');
     refreshRendering();
     setTimeout(() => {
       loadMovies();
-        preloader.classList.add("hidden")
-      }, 500)
+      preloader.classList.add('hidden');
+    }, 500);
     headerHome.classList.remove('visually-hidden');
     moviesContainer.classList.remove('visually-hidden');
     headerLibrary.classList.add('visually-hidden');
@@ -98,45 +97,46 @@ function libraryHidden(event) {
 
 let watchedMovies = [];
 
-export const getWatchedMovies = watchedParsed.map(el => {
-  getMovieDetails(el)
-    .then(result => {
-      const storageMovies = result;
-      watchedMovies.push(storageMovies);
-    })
-    .catch(error => console.log(error));
-
-  return watchedMovies;
-});
+export const getWatchedMovies =
+  watchedParsed.length === 0
+    ? []
+    : watchedParsed.map(el => {
+        getMovieDetails(el)
+          .then(result => {
+            const storageMovies = result;
+            watchedMovies.push(storageMovies);
+          })
+          .catch(error => console.log(error));
+        // console.log(watchedMovies);
+        return watchedMovies;
+      });
 
 let queueMovies = [];
 
-export const getQueueMovies = queueParsed.map(el => {
-  getMovieDetails(el)
-    .then(result => {
-      const storageMovies = result;
-      queueMovies.push(storageMovies);
-    })
-    .catch(error => console.log(error));
-  return queueMovies;
-});
+export const getQueueMovies =
+  queueParsed.length === 0
+    ? []
+    : queueParsed.map(el => {
+        getMovieDetails(el)
+          .then(result => {
+            const storageMovies = result;
+            queueMovies.push(storageMovies);
+          })
+          .catch(error => console.log(error));
+        console.log(queueMovies);
+        return queueMovies;
+      });
 
 export function renderStorageMovies(response) {
   refreshRendering();
   //get genres for movies
-  getGenres().then(el => {
-    const genres = el;
-    
-    generateCards(response);
-    //get movies with genres description
-    // getInitialMovies().then(res => {
-    //   const initialMovies = moviesData;
-
-    //   console.log(res.data);
-
-    //   generateCards(res.data.results);
-    // });
-  });
+  // console.log(response);
+  if (response !== undefined) {
+    getGenres().then(el => {
+      const genres = el;
+      generateCards(response);
+    });
+  }
 
   //create set of movie cards
   function generateCards(data) {
@@ -175,3 +175,9 @@ export function renderStorageMovies(response) {
     movieWrapper.append(moviePicture, movieTitle, movieInfo);
   }
 }
+
+myLibrary.addEventListener('click', libraryMovies);
+
+headerLibrary.addEventListener('click', reviewMovies);
+
+// window.addEventListener('load',reviewMovies)

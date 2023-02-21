@@ -61,7 +61,7 @@ signIn.addEventListener('click', e => {
       .then(userCredential => {
         // Signed in
         (user = userCredential.user),
-          document.querySelector('[login-modal]').classList.toggle('is-hidden');
+          document.querySelector('.login-modal').classList.toggle('is-hidden');
         Notify.success(`Hi, ${user.email.split('@')[0]}, you are sign in!`);
       })
       .catch(error => {

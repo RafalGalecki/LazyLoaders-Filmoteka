@@ -142,7 +142,7 @@ export const createModalCard = el => {
 
   btnWrapper.append(modalBtnAddWatch, modalBtnAddQue);
 
-  //Adding EvenListiner to watched and Que buttons
+  //Adding EvenListener to watched and Que buttons
   //Adding logic for their textContent
   let watched = [];
   const watchedData = JSON.parse(localStorage.getItem('watched'));
