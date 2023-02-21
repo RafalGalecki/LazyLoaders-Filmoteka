@@ -25,13 +25,13 @@ export const handleSubmit = function (e) {
   refreshRendering();
   refreshRenderingPagination()
 
-  //e.preventDefault();
+  e.preventDefault();
   searchInput = input.value.trim();
   setTimeout(() => {
     getSearchedMovies(searchInput);
     preloader.classList.add("hidden")
   }, 500)
-  clearInput();
+  //clearInput();
 };
 
 form.addEventListener('submit', handleSubmit);
