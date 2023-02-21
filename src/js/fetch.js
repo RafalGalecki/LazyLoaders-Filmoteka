@@ -16,6 +16,7 @@ export let totalPages;
 
 export let page = 1;
 export let movieID;
+export let selectedPage;
 
 //fetch for getting movies based on input for searching
 export const getSearchedMovies = async (searchInput, page = 1) => {
@@ -43,7 +44,7 @@ export const getSearchedMovies = async (searchInput, page = 1) => {
         refreshRendering();
         //refreshRenderingPagination();
         generatePageButtons(response.data.total_pages, response.data.page);
-        //setActivePage(selectedPage);
+        setActivePage(selectedPage);
         
         console.log('FETCH!!!!!!!!!!!!!');
         return response;
@@ -81,7 +82,7 @@ export const getInitialMovies = async (page = 1) => {
       setPaginationState("popular");
       getTotalPages(response.data.total_pages);
       foo();
-      refreshRendering();
+      //refreshRendering();
       //refreshRenderingPagination();
       renderMovies(response);
       generatePageButtons(response.data.total_pages, response.data.page);
@@ -92,9 +93,9 @@ export const getInitialMovies = async (page = 1) => {
     })
     .catch(function (error) {
       // handle error
-      Notiflix.Notify.warning(
-        'We are sorry, but getting data is impossible in that moment'
-      );
+      // Notiflix.Notify.warning(
+      //   'We are sorry, but getting data is impossible in that moment'
+      // );
     });
 
   return response;
@@ -117,9 +118,9 @@ export const getGenres = async () => {
     .catch(function (error) {
       // handle error
       // handle error
-      Notiflix.Notify.error(
-        'We are sorry, but getting data is impossible in that moment'
-      );
+      // Notiflix.Notify.error(
+      //   'We are sorry, but getting data is impossible in that moment'
+      // );
     });
 
   return response;
@@ -169,9 +170,9 @@ export const getMovieDetails = async movie_id => {
     .catch(function (error) {
       // handle error
       // handle error
-      Notiflix.Notify.warning(
-        'We are sorry, but getting data is impossible in that moment'
-      );
+      // Notiflix.Notify.warning(
+      //   'We are sorry, but getting data is impossible in that moment'
+      // );
     });
 
   return response;
