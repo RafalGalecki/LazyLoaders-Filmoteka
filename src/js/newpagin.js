@@ -183,20 +183,21 @@ paginationContainer.addEventListener('click', event => {
   //   }
 
   console.log('selected before arrows', selectedPage);
-
+  const previousBtn = document.getElementById('prevButton');
+    previousBtn.setAttribute('value', `${selectedPage}`);
+    
+  console.log('prevbuttonvalue', previousBtn.value);
   // Prev and Next buttons logic --------------------------
   // handle 'previous' button, one click = one page backward
     if (event.target.id === 'prevButton') {
-      prev(selectedPage);
-    // if (selectedPage === 1) {
-    //   return;
-    // } else {
-    //   selectedPage -= 1;
+      
+        console.log('prevbutton!!!!!', previousBtn.value);
+    selectedPage -= 1;
 
-    //   const prevBtn = document.getElementById('prevButton');
-    //   prevBtn.setAttribute('value', `${selectedPage}`);
-    // }
+    //const prevBtn = document.getElementById('prevButton');
+    //prevBtn.setAttribute('value', `${selectedPage}`);
   }
+
   //handle 'next' button, one click = one page forward
   if (event.target.id === 'nextButton') {
     if (selectedPage === totalPages) {
@@ -284,13 +285,13 @@ paginationContainer.addEventListener('click', event => {
 });
 
 function prev(selectedPage) {
-     if (selectedPage === 1) {
-       return;
-     } else {
-       selectedPage -= 1;
+  if (selectedPage === 1) {
+    return;
+  } else {
+    selectedPage -= 1;
 
-       const prevBtn = document.getElementById('prevButton');
-       prevBtn.setAttribute('value', `${selectedPage}`);
-    }
-    return selectedPage;
+    const prevBtn = document.getElementById('prevButton');
+    prevBtn.setAttribute('value', `${selectedPage}`);
+  }
+  return selectedPage;
 }
