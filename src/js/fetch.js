@@ -4,7 +4,7 @@ import { renderMovies } from './search-form';
 import { loadMovies } from './cards-home';
 import { refreshRendering, refreshRenderingPagination } from './refreshrendering';
 import { searchInput } from './search-form';
-import { generatePageButtons, selectedPage } from './newpagin';
+import { generatePageButtons } from './newpagin';
 
 
 const warning = document.querySelector('.warning');
