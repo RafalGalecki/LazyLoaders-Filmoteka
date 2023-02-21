@@ -25,7 +25,7 @@ export const handleSubmit = function (e) {
   refreshRendering();
   refreshRenderingPagination()
 
-  e.preventDefault();
+  //e.preventDefault();
   searchInput = input.value.trim();
   setTimeout(() => {
     getSearchedMovies(searchInput);

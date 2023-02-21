@@ -11,15 +11,12 @@ import { refreshRendering } from './refreshrendering';
 const screenWidth = screen.width;
 
 // Main pagination funtion
-export function renderCardPaginator(totalPages, selectedPage) {
+export function paginatorSearch(totalPages, selectedPage) {
   const paginationContainer = document.getElementById('pagination-numbers');
   paginationContainer.innerHTML = '';
 
-  refreshRendering();
-
-  if (searchInput) {
-    refreshRenderingPagination();
-  }
+    refreshRendering();
+    
   // do not render if nothing to render
   if (totalPages === 0) {
     return;
@@ -192,44 +189,28 @@ export function renderCardPaginator(totalPages, selectedPage) {
     }
     // set active page --------------------------
     setActivePage(selectedPage);
-    console.log('---------------popular');
+console.log('---------------SEARCH');
     // This build proper URL for defoult popular movies searching
     // or by inputed keywords
-    // const urlForSearching = ''.concat(
-    //   BASE_URL,
-    //   `${
-    //     searchInput === undefined
-    //       ? 'trending/movie/day?api_key='
-    //       : 'search/movie?api_key='
-    //   }`,
-    //   API_KEY,
-    //   '&query=',
-    //   searchInput,
-    //   `&page=${selectedPage}`
-    // );
-    const urlForPopular = ''.concat(
+    
+    // create URL with selected page for searching -------
+    const urlForSearching = ''.concat(
       BASE_URL,
-      'trending/movie/day?api_key=',
+      'search/movie?api_key=',
       API_KEY,
       '&query=',
       searchInput,
       `&page=${selectedPage}`
     );
+
     // axios fetch for searchin movies ----------------
 
     axios
-      .get(urlForPopular)
+      .get(urlForSearching)
       .then(function (response) {
         // handle success
-        preloader.classList.remove('hidden');
-        paginationContainer.classList.add('hidden');
-        refreshRendering();
 
-        setTimeout(() => {
-          renderMovies(response);
-          preloader.classList.add('hidden');
-          paginationContainer.classList.remove('hidden');
-        }, 500);
+        renderMovies(response);
       })
       .catch(function (error) {
         // handle error
@@ -238,10 +219,9 @@ export function renderCardPaginator(totalPages, selectedPage) {
           'We are sorry, but getting data is impossible in that moment'
         );
       });
-    paginationContainer.removeEventListener('click', event);
+      paginationContainer.addEventListener('click', event);
   });
 }
-
 // Page buttons logic
 // Set class activebtn to a selected page for indicating
 function setActivePage(currentPage) {
