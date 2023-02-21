@@ -21,8 +21,8 @@
     flex-direction: column;
     align-items: center;
     opacity: 1;
-    gap: 50px;
-    padding-top: 70px;
+    gap: 15px;
+    padding-top: 30px;
     min-width: 240px;
   }
 
@@ -33,21 +33,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 10px;
   }
   &__nav {
     text-align: center;
-    margin-top: 30px;
+    padding-bottom: 10px;
   }
 
   &__navlink {
     display: inline-block;
-    height: 20px;
-    width: 20px;
+    height: 10px;
+    width: 10px;
     border-radius: 50%;
     border: 1px #fff solid;
     background-color: #333;
-    margin: 0 10px 0 10px;
+    margin: 0 5px 0 5px;
     transition: background-color 0.6s ease;
   }
 
@@ -67,7 +67,7 @@
     font-family: 'Roboto';
     width: 80%;
     text-align: center;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 1.17;
   }
   &__info {
@@ -78,7 +78,7 @@
   }
   &__name {
     font-family: 'Mynerve';
-    font-size: 34px;
+    font-size: 22px;
     display: flex;
     min-width: 200px;
     gap: 40px;
@@ -128,8 +128,24 @@
       top: 0px;
       left: 0px;
     }
-    &__image{
-      max-height: 400px;
+    &__image {
+      max-height: 300px;
+    }
+
+    &__container {
+      gap: 30px;
+    }
+
+    &__slide {
+      gap: 20px;
+    }
+
+    &__navlink {
+      margin: 0 10px 0 10px;
+    }
+
+    &__description {
+      font-size: 22px;
     }
   }
 }
