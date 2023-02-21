@@ -3,7 +3,6 @@ import Notiflix from 'notiflix';
 import { renderMovies } from './search-form';
 import { loadMovies } from './cards-home';
 import { refreshRendering, refreshRenderingPagination } from './refreshrendering';
-import { foo } from './newpagin';
 import { searchInput } from './search-form';
 import { generatePageButtons, selectedPage } from './newpagin';
 
@@ -39,7 +38,6 @@ export const getSearchedMovies = async (searchInput, page = 1) => {
         warning.textContent = '';
         setPaginationState("search");
         getTotalPages(response.data.total_pages);
-        foo(response.data.page);
         renderMovies(response);
         refreshRendering();
         //refreshRenderingPagination();
@@ -81,7 +79,6 @@ export const getInitialMovies = async (page = 1) => {
       
       setPaginationState("popular");
       getTotalPages(response.data.total_pages);
-      foo();
       //refreshRendering();
       //refreshRenderingPagination();
       renderMovies(response);

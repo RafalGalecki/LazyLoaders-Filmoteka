@@ -15,13 +15,6 @@ import { renderMovies, searchInput } from './search-form';
 
 export const screenWidth = screen.width;
 
-export function foo(page) {
-  console.log('PAGINATION_STATE', PAGINATION_STATE);
-  console.log('totalPages', typeof totalPages, totalPages);
-  console.log('page', page);
-  console.log('searchInput', searchInput);
-}
-
 const paginationContainer = document.getElementById('pagination-numbers');
 paginationContainer.innerHTML = '';
 
@@ -85,7 +78,7 @@ export function generatePageButtons(totalPages, selectedPage) {
   backwardEllipsisBtn.setAttribute('id', 'prevStepButton');
   backwardEllipsisBtn.classList.add('pagination-button');
   backwardEllipsisBtn.classList.add('pagination-ellipsis');
-  // backwardEllipsisBtn.classList.add('hidden');
+
   backwardEllipsisBtn.innerHTML = '...';
 
   const forwardEllipsisBtn = document.createElement('button');
@@ -94,6 +87,7 @@ export function generatePageButtons(totalPages, selectedPage) {
   forwardEllipsisBtn.setAttribute('id', 'nextStepButton');
   forwardEllipsisBtn.classList.add('pagination-button');
   forwardEllipsisBtn.classList.add('pagination-ellipsis');
+
   forwardEllipsisBtn.innerHTML = '...';
 
   firstBtn.after(backwardEllipsisBtn);
@@ -117,7 +111,8 @@ export function generatePageButtons(totalPages, selectedPage) {
   setActivePage(selectedPage);
 }
 
-// Page buttons logic
+// Page buttons logic ------------------------------------------
+
 // Set class activebtn to a selected page for indicating
 export function setActivePage(currentPage) {
   console.log('SET ACTIVE', selectedPage);
@@ -133,7 +128,7 @@ export function setActivePage(currentPage) {
   }
 }
 
-// Limit page buttons displayed on load ---------------
+// Limit page buttons displayed on load
 export function limitDisplayedButtons(totalPages) {
   if (totalPages > 4) {
     for (let i = 5; i < totalPages; i++) {
@@ -143,7 +138,7 @@ export function limitDisplayedButtons(totalPages) {
   }
 }
 
-// Show page buttons around a selected page -------------
+// Show page buttons around a selected page
 export function renderPageButtons(selectedPage, totalPages) {
   for (let i = 2; i < totalPages; i++) {
     const hideButton = document.getElementById(`page${i}`);
@@ -159,6 +154,7 @@ export function renderPageButtons(selectedPage, totalPages) {
   }
 }
 
+// show less buttons to fit mobiles
 export function mobileFit(pagesAmount) {
   const screenWidth = screen.width;
   if (screenWidth < 440) {
@@ -176,7 +172,7 @@ export function mobileFit(pagesAmount) {
   }
 }
 
-// Ellipsis buttons show/hide logic -------------------------
+// Ellipsis buttons show/hide logic
 function handleVisibilityOfEllipisButtons(selectedPage, totalPages) {
   const backwardEllipsisBtn = document.getElementById('prevStepButton');
   const forwardEllipsisBtn = document.getElementById('nextStepButton');
@@ -198,6 +194,9 @@ function handleVisibilityOfEllipisButtons(selectedPage, totalPages) {
 }
 
 //--------------------------------------------------//
+// LISTENER
+// -------------------------------------------------//
+
 paginationContainer.addEventListener('click', event => {
   if (event.target.tagName != 'BUTTON') {
     return;
@@ -262,15 +261,3 @@ paginationContainer.addEventListener('click', event => {
   }
   return selectedPage;
 });
-
-function prev(selectedPage) {
-  if (selectedPage === 1) {
-    return;
-  } else {
-    selectedPage -= 1;
-
-    const prevBtn = document.getElementById('prevButton');
-    prevBtn.setAttribute('value', `${selectedPage}`);
-  }
-  return selectedPage;
-}
