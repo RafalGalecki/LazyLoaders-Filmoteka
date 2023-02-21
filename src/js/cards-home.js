@@ -35,7 +35,7 @@ export function loadMovies() {
   }
 
   //create single movie card element
-  function createMovieCard(singleMovie, genresDesc) {
+function createMovieCard(singleMovie, genresDesc) {
     let movieWrapper = document.createElement('div');
     movieWrapper.classList.add('movie-card');
     movieWrapper.setAttribute('id', singleMovie.id);
