@@ -44,6 +44,9 @@ export function reviewMovies(event) {
     preloader.classList.remove('hidden');
     refreshRendering();
     setTimeout(() => {
+
+      
+
       // console.log(!!getWatchedMovies[0]);
       // console.log(getWatchedMovies[0]);
       if (getWatchedMovies[0]) {
@@ -52,6 +55,7 @@ export function reviewMovies(event) {
       } else {
         watchedMoviesContainer.appendChild(templCard);
       }
+
       preloader.classList.add('hidden');
     }, 500);
   }
@@ -62,12 +66,16 @@ export function reviewMovies(event) {
     preloader.classList.remove('hidden');
     refreshRendering();
     setTimeout(() => {
+
+      
+
       // console.log(getWatchedMovies[0]);
       if (getWatchedMovies[0]) {
         renderStorageMovies(getQueueMovies[0]);
       } else {
         watchedMoviesContainer.appendChild(templCard);
       }
+
       preloader.classList.add('hidden');
     }, 500);
   }
