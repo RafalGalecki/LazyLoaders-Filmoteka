@@ -45,6 +45,18 @@
 
 .logo__text {
   display: none;
+  background: linear-gradient(
+        225deg,
+        $secondary-accent-cl,
+        $main-bg-cl,
+        $secondary-accent-cl
+      )
+      0 0 / 400%,
+    100%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: move-bg 8s infinite linear;
 }
 
 .menu {
@@ -141,5 +153,11 @@
 @media (min-width: 1024px) {
   .header-home__container {
     max-width: 882px;
+  }
+}
+
+@keyframes move-bg {
+  to {
+    background-position: 400%;
   }
 }
