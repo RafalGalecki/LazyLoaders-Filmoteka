@@ -2,15 +2,17 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 import { renderMovies } from './search-form';
 import { loadMovies } from './cards-home';
-import { renderCardPaginator } from './pagination';
-import { paginatorSearch } from './paginator-search';
-import { refreshRendering } from './refreshrendering';
-
+import { refreshRendering, refreshRenderingPagination } from './refreshrendering';
+import { foo } from './newpagin';
+import { searchInput } from './search-form';
+import { generatePageButtons, selectedPage } from './newpagin';
 
 
 const warning = document.querySelector('.warning');
 export const API_KEY = '7e626872ba2c457d969115031d94d6fb';
 export const BASE_URL = 'https://api.themoviedb.org/3/';
+export let PAGINATION_STATE;
+export let totalPages;
 
 export let page = 1;
 export let movieID;
@@ -34,8 +36,15 @@ export const getSearchedMovies = async (searchInput, page = 1) => {
 
       if (response.data.results.length !== 0) {
         warning.textContent = '';
+        setPaginationState("search");
+        getTotalPages(response.data.total_pages);
+        foo(response.data.page);
         renderMovies(response);
-        paginatorSearch(response.data.total_pages, response.data.page);
+        refreshRendering();
+        //refreshRenderingPagination();
+        generatePageButtons(response.data.total_pages, response.data.page);
+        //setActivePage(selectedPage);
+        
         console.log('FETCH!!!!!!!!!!!!!');
         return response;
       } else {
@@ -56,7 +65,7 @@ export const getSearchedMovies = async (searchInput, page = 1) => {
 };
 
 //fetch for getting movies for initial website based on daily trending
-export const getInitialMovies = async () => {
+export const getInitialMovies = async (page = 1) => {
   const urlForInitialMovies = ''.concat(
     BASE_URL,
     'trending/movie/day?api_key=',
@@ -68,8 +77,17 @@ export const getInitialMovies = async () => {
     .get(urlForInitialMovies)
     .then(function (response) {
       // handle success
-      //renderMovies(response);
-      renderCardPaginator(response.data.total_pages, response.data.page);
+      
+      setPaginationState("popular");
+      getTotalPages(response.data.total_pages);
+      foo();
+      refreshRendering();
+      //refreshRenderingPagination();
+      renderMovies(response);
+      generatePageButtons(response.data.total_pages, response.data.page);
+      setActivePage(selectedPage);
+      
+      console.log("INITIAL !!!!!");
       return response;
     })
     .catch(function (error) {
@@ -158,3 +176,11 @@ export const getMovieDetails = async movie_id => {
 
   return response;
 };
+
+// set PAGINATION_STATE
+function setPaginationState(state) {
+  PAGINATION_STATE = state;
+}
+function getTotalPages(total) {
+  totalPages = total;
+}
