@@ -12,6 +12,7 @@ export function loadMovies() {
     //get movies with genres description
     getInitialMovies().then(res => {
       const initialMovies = res.data.results;
+      console.log('Error initialMovies', initialMovies);
       generateCards(initialMovies, genres);
     });
   });
