@@ -6,6 +6,8 @@ import { renderCardPaginator } from './pagination';
 import { paginatorSearch } from './paginator-search';
 import { refreshRendering } from './refreshrendering';
 
+
+
 const warning = document.querySelector('.warning');
 export const API_KEY = '7e626872ba2c457d969115031d94d6fb';
 export const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -66,7 +68,7 @@ export const getInitialMovies = async () => {
     .get(urlForInitialMovies)
     .then(function (response) {
       // handle success
-      renderMovies(response);
+      //renderMovies(response);
       renderCardPaginator(response.data.total_pages, response.data.page);
       return response;
     })
