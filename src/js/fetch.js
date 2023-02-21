@@ -2,8 +2,6 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 import { renderMovies } from './search-form';
 import { loadMovies } from './cards-home';
-import { paginatorPopular } from './pagination';
-import { paginatorSearch } from './paginator-search';
 import { refreshRendering, refreshRenderingPagination } from './refreshrendering';
 import { foo } from './newpagin';
 import { searchInput } from './search-form';
@@ -45,8 +43,8 @@ export const getSearchedMovies = async (searchInput, page = 1) => {
         refreshRendering();
         //refreshRenderingPagination();
         generatePageButtons(response.data.total_pages, response.data.page);
-        setActivePage(selectedPage);
-        //paginatorSearch(response.data.total_pages, response.data.page);
+        //setActivePage(selectedPage);
+        
         console.log('FETCH!!!!!!!!!!!!!');
         return response;
       } else {
@@ -88,7 +86,7 @@ export const getInitialMovies = async (page = 1) => {
       renderMovies(response);
       generatePageButtons(response.data.total_pages, response.data.page);
       setActivePage(selectedPage);
-      //paginatorPopular(response.data.total_pages, response.data.page);
+      
       console.log("INITIAL !!!!!");
       return response;
     })
