@@ -14,9 +14,10 @@ const screenWidth = screen.width;
 export function paginatorSearch(totalPages, selectedPage) {
   const paginationContainer = document.getElementById('pagination-numbers');
   paginationContainer.innerHTML = '';
+console.log('searchInput in search:', searchInput);
 
-    refreshRendering();
-    
+  refreshRendering();
+
   // do not render if nothing to render
   if (totalPages === 0) {
     return;
@@ -95,8 +96,9 @@ export function paginatorSearch(totalPages, selectedPage) {
 
   // LISTENER to page buttons-----------------------------
   console.log('selected before listener', selectedPage);
+
   paginationContainer.addEventListener('click', event => {
-    event.preventDefault();
+    //event.preventDefault();
     console.log('selected before arrows', selectedPage);
 
     // Prev and Next buttons logic --------------------------
@@ -189,10 +191,10 @@ export function paginatorSearch(totalPages, selectedPage) {
     }
     // set active page --------------------------
     setActivePage(selectedPage);
-console.log('---------------SEARCH');
+    console.log('---------------SEARCH');
     // This build proper URL for defoult popular movies searching
     // or by inputed keywords
-    
+
     // create URL with selected page for searching -------
     const urlForSearching = ''.concat(
       BASE_URL,
@@ -219,7 +221,8 @@ console.log('---------------SEARCH');
           'We are sorry, but getting data is impossible in that moment'
         );
       });
-      paginationContainer.addEventListener('click', event);
+    return;
+    paginationContainer.removeEventListener('click', event);
   });
 }
 // Page buttons logic

@@ -11,16 +11,18 @@ import { refreshRendering } from './refreshrendering';
 const screenWidth = screen.width;
 
 // Main pagination funtion
-export function renderCardPaginator(totalPages, selectedPage) {
+export function paginatorPopular(totalPages, selectedPage) {
   const paginationContainer = document.getElementById('pagination-numbers');
   paginationContainer.innerHTML = '';
+
+  console.log('searchInput in popular:', searchInput);
 
   refreshRendering();
 
   if (searchInput) {
     refreshRenderingPagination();
   }
-  // do not render if nothing to render
+  //do not render if nothing to render
   if (totalPages === 0) {
     return;
   }
@@ -97,9 +99,11 @@ export function renderCardPaginator(totalPages, selectedPage) {
   }
 
   // LISTENER to page buttons-----------------------------
+
   console.log('selected before listener', selectedPage);
+
   paginationContainer.addEventListener('click', event => {
-    event.preventDefault();
+    //event.preventDefault();
     console.log('selected before arrows', selectedPage);
 
     // Prev and Next buttons logic --------------------------
@@ -211,8 +215,6 @@ export function renderCardPaginator(totalPages, selectedPage) {
       BASE_URL,
       'trending/movie/day?api_key=',
       API_KEY,
-      '&query=',
-      searchInput,
       `&page=${selectedPage}`
     );
     // axios fetch for searchin movies ----------------
@@ -238,6 +240,7 @@ export function renderCardPaginator(totalPages, selectedPage) {
           'We are sorry, but getting data is impossible in that moment'
         );
       });
+    return;
     paginationContainer.removeEventListener('click', event);
   });
 }

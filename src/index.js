@@ -21,5 +21,6 @@ import './js/refreshPage';
 import './js/spinner';
 import './js/refreshrendering';
 import './js/pagination';
+import './js/paginator-search.js';
 import './js/to-top';
 
