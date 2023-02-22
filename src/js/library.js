@@ -9,6 +9,7 @@ import { clearInput } from './search-form';
 import { preloader } from './spinner';
 import { refreshRenderingPagination } from './refreshrendering';
 import { libraryMovies, reviewMovies } from './library-render';
+import { generatePageButtons } from './newpagin';
 
 const watchedMoviesContainer = document.querySelector(
   '.cards-watched-container'
@@ -25,6 +26,8 @@ const templCard = templ.querySelector('.content-library__card');
 
 const LOCALSTORAGE_WATCHED = 'watched';
 const LOCALSTORAGE_QUE = 'que';
+
+const paginationContainer = document.getElementById('pagination-numbers');
 
 const watched = localStorage.getItem(LOCALSTORAGE_WATCHED) || '';
 const queue = localStorage.getItem(LOCALSTORAGE_QUE) || '';
@@ -56,8 +59,10 @@ export function homeHidden(event) {
 
   if (event.target.classList.contains('js-library')) {
     preloader.classList.remove('hidden');
+    paginationContainer.classList.add('hidden');
     refreshRendering();
     refreshRenderingPagination();
+    generatePageButtons((totalPages = 1), (selectedPage = 1));
 
     headerHome.classList.add('visually-hidden');
     moviesContainer.classList.add('visually-hidden');
@@ -75,6 +80,7 @@ export function homeHidden(event) {
         watchedMoviesContainer.appendChild(templCard);
       }
       preloader.classList.add('hidden');
+      paginationContainer.classList.remove('hidden');
     }, 500);
   }
 }
@@ -83,7 +89,9 @@ function libraryHidden(event) {
   event.preventDefault();
   if (event.target.classList.contains('js-home-page')) {
     preloader.classList.remove('hidden');
+    paginationContainer.classList.add('hidden');
     refreshRendering();
+    refreshRenderingPagination();
     clearInput();
     setTimeout(() => {
       loadMovies();
@@ -91,6 +99,7 @@ function libraryHidden(event) {
     }, 500);
     headerHome.classList.remove('visually-hidden');
     moviesContainer.classList.remove('visually-hidden');
+    paginationContainer.classList.remove('hidden');
     headerLibrary.classList.add('visually-hidden');
     cardsLibraryWatched.classList.add('visually-hidden');
   }

@@ -34,6 +34,9 @@ export function generatePageButtons(totalPages, selectedPage) {
     pageBtn.setAttribute('id', `page${i}`);
     pageBtn.classList.add('pagination-button');
     pageBtn.innerText = i;
+    if (totalPages === 1) {
+      pageBtn.setAttribute('disabled', true);
+    }
 
     paginationContainer.append(pageBtn);
   }
@@ -70,6 +73,11 @@ export function generatePageButtons(totalPages, selectedPage) {
   nextBtn.classList.add('pagination-arrow-btn');
   nextBtn.innerHTML = '-&gt;';
   paginationContainer.append(nextBtn);
+
+  if (totalPages === 1) {
+    prevBtn.setAttribute('disabled', true);
+    nextBtn.setAttribute('disabled', true);
+  }
 
   // generate ellipsis (...) buttons --------------------
 
