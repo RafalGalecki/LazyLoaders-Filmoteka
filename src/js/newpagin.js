@@ -116,7 +116,6 @@ export function generatePageButtons(totalPages, selectedPage) {
 
 // Set class activebtn to a selected page for indicating
 export function setActivePage(currentPage) {
-  console.log('SET ACTIVE', selectedPage);
   const elementActive = document.querySelector('.activebtn');
   if (elementActive) {
     elementActive.classList.remove('activebtn');
@@ -246,24 +245,23 @@ paginationContainer.addEventListener('click', event => {
   }
 
   if (PAGINATION_STATE === 'popular') {
-
     preloader.classList.remove('hidden');
-    refreshRendering()
-    refreshRenderingPagination()
+    refreshRendering();
+    refreshRenderingPagination();
     setTimeout(() => {
       getInitialMovies(selectedPage).then(data => {
         preloader.classList.add('hidden');
-      });}, 500); 
-
+      });
+    }, 500);
   } else if (PAGINATION_STATE === 'search') {
-
     preloader.classList.remove('hidden');
-    refreshRendering()
-    refreshRenderingPagination()
+    refreshRendering();
+    refreshRenderingPagination();
     setTimeout(() => {
       getSearchedMovies(searchInput, selectedPage).then(data => {
         preloader.classList.add('hidden');
-      });}, 500);
+      });
+    }, 500);
   }
   return selectedPage;
 });
