@@ -249,18 +249,26 @@ paginationContainer.addEventListener('click', event => {
     refreshRendering();
     refreshRenderingPagination();
     setTimeout(() => {
-      getInitialMovies(selectedPage).then(data => {
-        preloader.classList.add('hidden');
-      });
+      getInitialMovies(selectedPage)
+        .then(data => {
+          preloader.classList.add('hidden');
+        })
+        .catch(function (error) {
+          // handle error
+        });
     }, 500);
   } else if (PAGINATION_STATE === 'search') {
     preloader.classList.remove('hidden');
     refreshRendering();
     refreshRenderingPagination();
     setTimeout(() => {
-      getSearchedMovies(searchInput, selectedPage).then(data => {
-        preloader.classList.add('hidden');
-      });
+      getSearchedMovies(searchInput, selectedPage)
+        .then(data => {
+          preloader.classList.add('hidden');
+        })
+        .catch(function (error) {
+          // handle error
+        });
     }, 500);
   }
   return selectedPage;
