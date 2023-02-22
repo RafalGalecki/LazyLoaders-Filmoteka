@@ -64,6 +64,10 @@ button {
 
 [data-modal] {
   animation: modal-open 0.25s;
+
+  &.modal-container {
+    animation: modal-open 0.35s;
+  }
 }
 
 @keyframes modal-open {
