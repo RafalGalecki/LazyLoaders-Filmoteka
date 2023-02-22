@@ -62,7 +62,7 @@ export function homeHidden(event) {
     paginationContainer.classList.add('hidden');
     refreshRendering();
     refreshRenderingPagination();
-   // generatePageButtons((totalPages = 1), (selectedPage = 1));
+    generatePageButtons(1, 1);
 
     headerHome.classList.add('visually-hidden');
     moviesContainer.classList.add('visually-hidden');
