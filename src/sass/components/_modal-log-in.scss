@@ -43,6 +43,20 @@
   align-items: center;
   padding-top: 50px;
 }
+.login-title {
+        font-size: 40px;
+          font-weight: 500;
+      background: linear-gradient(225deg,
+          $secondary-accent-cl,
+          #eee,
+          $secondary-accent-cl ) 0 0 / 400%,
+        100%;
+      color: transparent;
+      border-radius: 2px;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: move-bg 15s infinite linear;
+}
 
 .login-wrapper {
   justify-content: center;
@@ -70,7 +84,9 @@
   top: -10px;
   left: 90%;
 }
-
+.login-modal {
+  transition: all .5s cubic-bezier(.38, .53, .8, .71), opacity .5s cubic-bezier(.38, .53, .8, .71);
+}
 .modal-login {
   position: absolute;
   background-color: $secondary-bg-cl;
