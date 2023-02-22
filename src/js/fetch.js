@@ -2,10 +2,12 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 import { renderMovies } from './search-form';
 import { loadMovies } from './cards-home';
-import { refreshRendering, refreshRenderingPagination } from './refreshrendering';
+import {
+  refreshRendering,
+  refreshRenderingPagination,
+} from './refreshrendering';
 import { searchInput } from './search-form';
 import { generatePageButtons } from './newpagin';
-
 
 const warning = document.querySelector('.warning');
 export const API_KEY = '7e626872ba2c457d969115031d94d6fb';
@@ -36,15 +38,14 @@ export const getSearchedMovies = async (searchInput, page = 1) => {
 
       if (response.data.results.length !== 0) {
         warning.textContent = '';
-        setPaginationState("search");
+        setPaginationState('search');
         getTotalPages(response.data.total_pages);
         renderMovies(response);
         refreshRendering();
         //refreshRenderingPagination();
         generatePageButtons(response.data.total_pages, response.data.page);
         setActivePage(selectedPage);
-        
-        console.log('FETCH!!!!!!!!!!!!!');
+
         return response;
       } else {
         // if no results found - show warning
@@ -54,12 +55,11 @@ export const getSearchedMovies = async (searchInput, page = 1) => {
     })
     .catch(function (error) {
       // handle error
-      console.log(error);
       // Notiflix.Notify.error(
       //   'We are sorry, but getting data is impossible in that moment'
       // );
     });
-  console.log('Input Response', response);
+
   return response;
 };
 
@@ -76,16 +76,15 @@ export const getInitialMovies = async (page = 1) => {
     .get(urlForInitialMovies)
     .then(function (response) {
       // handle success
-      
-      setPaginationState("popular");
+
+      setPaginationState('popular');
       getTotalPages(response.data.total_pages);
       //refreshRendering();
       //refreshRenderingPagination();
       renderMovies(response);
       generatePageButtons(response.data.total_pages, response.data.page);
       setActivePage(selectedPage);
-      
-      console.log("INITIAL !!!!!");
+
       return response;
     })
     .catch(function (error) {
@@ -122,30 +121,6 @@ export const getGenres = async () => {
 
   return response;
 };
-
-// API configuration: check for images
-// const getConfiguration = async () => {
-//   const urlForInitialMovies = ''.concat(
-//     BASE_URL,
-//     'configuration?api_key=',
-//     API_KEY
-//   );
-
-//   const response = await axios
-//     .get(urlForInitialMovies)
-//     .then(function (response) {
-//       // handle success
-//       console.log(response);
-//     })
-//     .catch(function (error) {
-//       // handle error
-//       console.log(error);
-//     });
-
-//   return response;
-// };
-
-// getConfiguration()
 
 //get movie details
 export const getMovieDetails = async movie_id => {

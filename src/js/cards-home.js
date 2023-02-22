@@ -13,7 +13,7 @@ export function loadMovies() {
     getInitialMovies()
       .then(res => {
         const initialMovies = res.data.results;
-        console.log('Error initialMovies', initialMovies);
+
         generateCards(initialMovies, genres);
       })
       .catch(function (error) {
@@ -83,9 +83,3 @@ export function loadMovies() {
 }
 
 document.addEventListener('DOMContentLoaded', loader(loadMovies));
-
-/* const delay = () => {
-  setTimeout (() => {
-    loadMovies()}, 500)}
-
-document.addEventListener('DOMContentLoaded', delay)  */

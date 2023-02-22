@@ -107,7 +107,7 @@ export const getWatchedMovies =
             watchedMovies.push(storageMovies);
           })
           .catch(error => console.log(error));
-        // console.log(watchedMovies);
+
         return watchedMovies;
       });
 
@@ -123,14 +123,12 @@ export const getQueueMovies =
             queueMovies.push(storageMovies);
           })
           .catch(error => console.log(error));
-        console.log(queueMovies);
         return queueMovies;
       });
 
 export function renderStorageMovies(response) {
   refreshRendering();
   //get genres for movies
-  // console.log(response);
   if (response !== undefined) {
     getGenres().then(el => {
       const genres = el;
