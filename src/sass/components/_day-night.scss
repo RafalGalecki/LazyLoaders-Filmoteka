@@ -1,18 +1,26 @@
 @use '../utils/variables' as *;
 .light-theme {
   color: $main-text-cl;
-  transition: all .5s cubic-bezier(.38, .53, .8, .71), opacity .5s cubic-bezier(.38, .53, .8, .71);
+  transition: all 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71),
+    opacity 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71);
 }
 .dark-theme {
   background-color: $night-main-bg-color;
   color: $night-main-color;
-      transition: all .5s cubic-bezier(.38, .53, .8, .71), opacity .5s cubic-bezier(.38, .53, .8, .71);
+  transition: all 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71),
+    opacity 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71);
 
   & .login-input,
   .modal-card__list-details {
     color: $night-main-color;
   }
+  & .modal-login-close-btn {
+    fill: $night-second-color;
+  }
 
+  & .btn__icon-close {
+    stroke: $night-second-color;
+  }
   & .pagination-button,
   .modal-card__votes {
     color: $night-second-color;
@@ -24,9 +32,9 @@
   .modal-login {
     background-color: $night-main-bg-color;
   }
-& .login-input{
-  border-bottom:2px solid $secondary-accent-cl;
-}
+  & .login-input {
+    border-bottom: 2px solid $secondary-accent-cl;
+  }
   & .activebtn {
     background-color: $night-second-bg-color;
   }
@@ -95,7 +103,6 @@
   height: 0;
   width: 0;
   pointer-events: none;
-
 }
 
 .theme-switch__track {
@@ -110,7 +117,8 @@
   border-radius: inherit;
   z-index: 1;
   cursor: pointer;
-      transition: all .5s cubic-bezier(.38, .53, .8, .71), opacity .5s cubic-bezier(.38, .53, .8, .71);
+  transition: all 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71),
+    opacity 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71);
 }
 
 .theme-switch__marker {
@@ -123,7 +131,8 @@
   pointer-events: none;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   transform: translateX(3px);
-      transition: all .5s cubic-bezier(.38, .53, .8, .71), opacity .5s cubic-bezier(.38, .53, .8, .71);
+  transition: all 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71),
+    opacity 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71);
 }
 
 .theme-switch__toggle:checked + .theme-switch__track {
