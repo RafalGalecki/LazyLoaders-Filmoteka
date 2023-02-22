@@ -104,6 +104,6 @@ export function renderMovies(response) {
   }
 }
 
-function clearInput() {
+export function clearInput() {
   input.value = '';
 }
