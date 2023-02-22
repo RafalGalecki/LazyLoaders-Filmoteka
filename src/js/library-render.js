@@ -51,7 +51,11 @@ export function reviewMovies(event) {
     paginationContainer.classList.add('hidden');
     preloader.classList.remove('hidden');
     refreshRendering();
+
+    refreshRenderingPagination();
+
     //refreshRenderingPagination();
+
     //generatePageButtons((totalPages = 1), (selectedPage = 1));
     setTimeout(() => {
       if (getWatchedMovies[0]) {
@@ -71,8 +75,13 @@ export function reviewMovies(event) {
     paginationContainer.classList.add('hidden');
     preloader.classList.remove('hidden');
     refreshRendering();
+
+    refreshRenderingPagination();
+   // generatePageButtons((totalPages = 1), (selectedPage = 1));
+
     //refreshRenderingPagination();
     //generatePageButtons((totalPages = 1), (selectedPage = 1));
+
     setTimeout(() => {
       if (getQueueMovies[0]) {
         renderStorageMovies(getQueueMovies[0]);
