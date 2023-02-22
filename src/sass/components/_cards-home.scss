@@ -26,6 +26,7 @@
     object-fit: cover;
     overflow: hidden;
     border-radius: 5px;
+    box-shadow: 5px 5px 20px rgb(107, 102, 98);
   }
 
   &__title {
@@ -51,6 +52,7 @@
 
   &:hover {
     transform: scale(1.05);
+    cursor: pointer;
   }
 }
 
