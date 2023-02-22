@@ -10,16 +10,21 @@
 
   border-radius: 5px;
   cursor: pointer;
-  
+  &:hover,
+    &:active,
+    &:focus {
+      background: #ffffff;
+      border-color: #ff6b01;
+      color: black
+    }
+
+&__addToQue,
   &__addToWatched {
     border: 1px solid #ff6b01;
     background: #ff6b01;
     color: #ffffff;
   }
   
-  &__addToQue {
-    background: #ffffff;
-  }
   
   &--close {
     position: absolute;
