@@ -1,6 +1,6 @@
 import '../sass/components/_cards-home.scss';
 import { getInitialMovies, getGenres, getMovieDetails } from './fetch';
-import { preloader, delayForSpinner } from './spinner';
+import { loader } from './spinner';
 
 export const moviesContainer = document.querySelector('.cards-container');
 
@@ -78,7 +78,7 @@ function createMovieCard(singleMovie, genresDesc) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', delayForSpinner(loadMovies));
+document.addEventListener('DOMContentLoaded', loader(loadMovies));
 
 /* const delay = () => {
   setTimeout (() => {

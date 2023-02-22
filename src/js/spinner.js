@@ -26,20 +26,9 @@ var opts = {
 var target = document.getElementById('preloader')
 var spinner = new Spinner(opts).spin(target);
 
-export const delayForSpinner = (delayed) => {
+export const loader = (task) => {
   preloader.classList.remove("hidden")
   setTimeout (() => {
-    delayed()
+    task()
     preloader.classList.add("hidden")
   }, 500)}
-//
-/* // Function for showing spinner
-export function displaySpinner () {
-  preloader.classList.remove("hidden")
-}
-
-export function hideSpinner () {
-  setTimeout (() => {
-    preloader.classList.add("hidden")
-  }, 5000);
-} */

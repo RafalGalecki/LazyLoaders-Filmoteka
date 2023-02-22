@@ -10,6 +10,7 @@ import {
   refreshRenderingPagination,
 } from './refreshrendering';
 import { renderMovies, searchInput } from './search-form';
+import { preloader, showSpinner } from './spinner';
 
 //export let selectedPage;
 
@@ -245,19 +246,24 @@ paginationContainer.addEventListener('click', event => {
   }
 
   if (PAGINATION_STATE === 'popular') {
-    //showSpinner();
-    getInitialMovies(selectedPage).then(data => {
-      refreshRendering();
-      //renderMovies(data);
-      //hideSpinner();
-    });
+
+    preloader.classList.remove('hidden');
+    refreshRendering()
+    refreshRenderingPagination()
+    setTimeout(() => {
+      getInitialMovies(selectedPage).then(data => {
+        preloader.classList.add('hidden');
+      });}, 500); 
+
   } else if (PAGINATION_STATE === 'search') {
-    //showSpinner();
-    getSearchedMovies(searchInput, selectedPage).then(data => {
-      refreshRendering();
-      //renderMovies(data);
-      //hideSpinner();
-    });
+
+    preloader.classList.remove('hidden');
+    refreshRendering()
+    refreshRenderingPagination()
+    setTimeout(() => {
+      getSearchedMovies(searchInput, selectedPage).then(data => {
+        preloader.classList.add('hidden');
+      });}, 500);
   }
   return selectedPage;
 });
