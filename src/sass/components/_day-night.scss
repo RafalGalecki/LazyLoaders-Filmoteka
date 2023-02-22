@@ -1,9 +1,12 @@
 @use '../utils/variables' as *;
-
+.light-theme {
+  color: $main-text-cl;
+  transition: all .5s cubic-bezier(.38, .53, .8, .71), opacity .5s cubic-bezier(.38, .53, .8, .71);
+}
 .dark-theme {
   background-color: $night-main-bg-color;
   color: $night-main-color;
-      transition: all .5s cubic-bezier(.38, .53, .8, .71), opacity .5s cubic-bezier(.38, .53, .8, .71);;
+      transition: all .5s cubic-bezier(.38, .53, .8, .71), opacity .5s cubic-bezier(.38, .53, .8, .71);
 
   & .login-input,
   .modal-card__list-details {
