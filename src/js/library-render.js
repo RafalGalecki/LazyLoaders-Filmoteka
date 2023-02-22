@@ -17,8 +17,6 @@ export function libraryMovies(event) {
   preloader.classList.remove('hidden');
   refreshRendering();
   setTimeout(() => {
-// console.log(getWatchedMovies);
-// console.log(getQueueMovies);
     if (getWatchedMovies[0]) {
       renderStorageMovies(getWatchedMovies[0]);
     }
@@ -44,14 +42,8 @@ export function reviewMovies(event) {
     preloader.classList.remove('hidden');
     refreshRendering();
     setTimeout(() => {
-
-      
-
-      // console.log(!!getWatchedMovies[0]);
-      // console.log(getWatchedMovies[0]);
       if (getWatchedMovies[0]) {
         renderStorageMovies(getWatchedMovies[0]);
-
       } else {
         watchedMoviesContainer.appendChild(templCard);
       }
@@ -66,10 +58,6 @@ export function reviewMovies(event) {
     preloader.classList.remove('hidden');
     refreshRendering();
     setTimeout(() => {
-
-      
-
-      // console.log(getWatchedMovies[0]);
       if (getWatchedMovies[0]) {
         renderStorageMovies(getQueueMovies[0]);
       } else {
@@ -80,43 +68,6 @@ export function reviewMovies(event) {
     }, 500);
   }
 }
-
-// function libraryEvents(event) {
-//   console.log(event.currentTarget);
-//   event.preventDefault();
-//   if (event.target.nodeName !== 'BUTTON') {
-//     return;
-//   }
-
-//   if (event.target.classList.contains('js-btn-watched')) {
-//     libBtnWatched.classList.add('btn-lib-js-active');
-//     libBtnQueue.classList.remove('btn-lib-js-active');
-//     preloader.classList.remove('hidden');
-//     refreshRendering();
-//     setTimeout(() => {
-//       console.log(!!getWatchedMovies[0]);
-//       console.log(getWatchedMovies[0]);
-//       if (getWatchedMovies[0]) {
-//         renderStorageMovies(getWatchedMovies[0]);
-//         preloader.classList.add('hidden');
-//       }
-//     }, 500);
-//   }
-
-//   if (event.target.classList.contains('js-btn-queue')) {
-//     libBtnQueue.classList.add('btn-lib-js-active');
-//     libBtnWatched.classList.remove('btn-lib-js-active');
-//     preloader.classList.remove('hidden');
-//     refreshRendering();
-//     setTimeout(() => {
-//       console.log(getWatchedMovies[0]);
-//       if (getWatchedMovies[0]) {
-//         renderStorageMovies(getQueueMovies[0]);
-//         preloader.classList.add('hidden');
-//       }
-//     }, 500);
-//   }
-// }
 
 function libraryUpdate(event) {
   event.preventDefault();

@@ -5,7 +5,7 @@ import { getGenres, getMovieDetails } from './fetch';
 import { loadMovies } from './cards-home';
 import { refreshRendering } from './refreshrendering';
 import { moviesContainer } from './cards-home';
-
+import { clearInput } from './search-form';
 import { preloader } from './spinner';
 import { refreshRenderingPagination } from './refreshrendering';
 import { libraryMovies, reviewMovies } from './library-render';
@@ -84,6 +84,7 @@ function libraryHidden(event) {
   if (event.target.classList.contains('js-home-page')) {
     preloader.classList.remove('hidden');
     refreshRendering();
+    clearInput();
     setTimeout(() => {
       loadMovies();
       preloader.classList.add('hidden');
@@ -107,7 +108,7 @@ export const getWatchedMovies =
             watchedMovies.push(storageMovies);
           })
           .catch(error => console.log(error));
-        // console.log(watchedMovies);
+
         return watchedMovies;
       });
 
@@ -123,14 +124,12 @@ export const getQueueMovies =
             queueMovies.push(storageMovies);
           })
           .catch(error => console.log(error));
-        console.log(queueMovies);
         return queueMovies;
       });
 
 export function renderStorageMovies(response) {
   refreshRendering();
   //get genres for movies
-  // console.log(response);
   if (response !== undefined) {
     getGenres().then(el => {
       const genres = el;

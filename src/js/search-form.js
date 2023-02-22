@@ -1,6 +1,9 @@
 import debounce from 'lodash.debounce';
 import { getSearchedMovies, getGenres } from './fetch';
-import { refreshRendering, refreshRenderingPagination } from './refreshrendering';
+import {
+  refreshRendering,
+  refreshRenderingPagination,
+} from './refreshrendering';
 import { moviesContainer } from './cards-home';
 import { Notify } from 'notiflix';
 import { preloader, delayForSpinner } from './spinner';
@@ -11,26 +14,17 @@ export let searchInput;
 const form = document.querySelector('#search-form');
 const input = document.querySelector('#search-form input');
 
-// export const handleSubmit = debounce(function (e) {
-//   e.preventDefault();
-//   searchInput = e.target.value.trim();
-
-//   refreshRendering();
-//   getSearchedMovies(searchInput);
-//   //renderMovies(res.data.results);
-// }, DEBOUNCE_DELAY);
-
 export const handleSubmit = function (e) {
-  preloader.classList.remove("hidden")
+  preloader.classList.remove('hidden');
   refreshRendering();
-  refreshRenderingPagination()
+  refreshRenderingPagination();
 
   e.preventDefault();
   searchInput = input.value.trim();
   setTimeout(() => {
     getSearchedMovies(searchInput);
-    preloader.classList.add("hidden")
-  }, 500)
+    preloader.classList.add('hidden');
+  }, 500);
   //clearInput();
 };
 
@@ -89,12 +83,16 @@ export function renderMovies(response) {
 
     let movieInfo = document.createElement('p');
     movieInfo.classList.add('movie-card__info');
-    
+
     if (genresDesc.length > 3) {
-      genresDesc = genresDesc.slice(0, 2)
-      movieInfo.textContent = `${genresDesc.join(', ') + ', Other'} | ${singleMovie.release_date.slice(0, 4)}`;
+      genresDesc = genresDesc.slice(0, 2);
+      movieInfo.textContent = `${
+        genresDesc.join(', ') + ', Other'
+      } | ${singleMovie.release_date.slice(0, 4)}`;
     } else {
-      movieInfo.textContent = `${genresDesc.join(', ')} | ${singleMovie.release_date.slice(0, 4)}`;
+      movieInfo.textContent = `${genresDesc.join(
+        ', '
+      )} | ${singleMovie.release_date.slice(0, 4)}`;
     }
 
     let movieRating = document.createElement('span');
@@ -106,6 +104,6 @@ export function renderMovies(response) {
   }
 }
 
-function clearInput() {
+export function clearInput() {
   input.value = '';
 }

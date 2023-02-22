@@ -60,10 +60,160 @@ button {
     padding-bottom: 77px;
   }
 }
+[data-modal] {
+  animation: modal-open 0.25s;
+}
+[data-modal].modal-container {
+  animation: modal-open 0.35s;
+}
+
+@keyframes modal-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.light-theme {
+  color: #000000;
+  transition: all 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71), opacity 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71);
+}
+
+.dark-theme {
+  background-color: #333333;
+  color: #ffffff;
+  transition: all 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71), opacity 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71);
+}
+.dark-theme .login-input,
+.dark-theme .modal-card__list-details {
+  color: #ffffff;
+}
+.dark-theme .pagination-button,
+.dark-theme .modal-card__votes {
+  color: #ff6b08;
+}
+.dark-theme .pagination-button,
+.dark-theme .modal-card,
+.dark-theme .modal__container,
+.dark-theme .modal-login {
+  background-color: #333333;
+}
+.dark-theme .login-input {
+  border-bottom: 2px solid #ff6b08;
+}
+.dark-theme .activebtn {
+  background-color: #ff6b08;
+}
+.dark-theme .footer {
+  background-color: #000000;
+}
+.dark-theme .pagination-button {
+  box-shadow: #ffffff;
+}
+.dark-theme .pagination-button:hover, .dark-theme .pagination-button:focus {
+  background-color: #ff6b08;
+  color: #333333;
+}
+.dark-theme .activebtn {
+  color: #ffffff;
+  box-shadow: #ff6b08;
+}
+.dark-theme .activebtn:hover, .dark-theme .activebtn:focus {
+  background-color: #ff6b08;
+  color: #333333;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 200px;
+}
+
+.theme-switch {
+  display: flex;
+  align-items: center;
+  position: sticky;
+}
+
+.theme-switch__icon {
+  color: #ffffff;
+  height: 15px;
+  width: 15px;
+}
+
+.theme-switch__control {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 32px;
+  height: 15px;
+  border-radius: 50em;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.theme-switch__toggle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+
+.theme-switch__track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  background-color: #333333;
+  border-radius: inherit;
+  z-index: 1;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71), opacity 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71);
+}
+
+.theme-switch__marker {
+  position: relative;
+  background-color: #fff;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  transform: translateX(3px);
+  transition: all 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71), opacity 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71);
+}
+
+.theme-switch__toggle:checked + .theme-switch__track {
+  background-color: #ff6b08;
+}
+
+.theme-switch__toggle:checked ~ .theme-switch__marker {
+  transform: translateX(17px);
+}
+
+.theme-switch__toggle:focus + .theme-switch__track,
+.theme-switch__toggle:active + .theme-switch__track {
+  box-shadow: 0 0 0 3px #ff6b08;
+}
+
 .header-home {
   position: relative;
   background-image: url("/src/images/bg-image.jpg");
-  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   max-width: 100%;
   height: 230px;
   margin: 0 auto;
@@ -100,6 +250,11 @@ button {
 
 .logo__text {
   display: none;
+  background: linear-gradient(225deg, #ff6b08, #ffffff, #ff6b08) 0 0/400%, 100%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: move-bg 8s infinite linear;
 }
 
 .menu {
@@ -111,7 +266,7 @@ button {
 
 .nav__list {
   display: flex;
-  gap: 40px;
+  gap: 20px;
   align-items: center;
 }
 
@@ -182,16 +337,25 @@ button {
     font-size: 30px;
     font-weight: 500;
   }
+  .nav__list {
+    gap: 40px;
+  }
 }
 @media (min-width: 1024px) {
   .header-home__container {
     max-width: 882px;
   }
 }
+@keyframes move-bg {
+  to {
+    background-position: 400%;
+  }
+}
 .header-library {
   position: relative;
   background-image: url("/src/images/Rectangle-1x-desktop.jpg");
-  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   max-width: 100%;
   height: 230px;
   margin: 0 auto;
@@ -235,7 +399,7 @@ button {
   color: #fff;
   background-color: #ff6b08;
 }
-.btn-lib--accent, .btn-lib-js-active {
+.btn-lib-js-active {
   border-color: #ff6b08;
   color: #fff;
   background-color: #ff6b08;
@@ -514,7 +678,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 4px;
 }
 .footer__text {
   display: flex;
@@ -522,6 +686,7 @@ button {
   color: #545454;
   font-size: 14px;
   line-height: 1.17;
+  gap: 4px;
 }
 .footer__link {
   color: #545454;
@@ -532,7 +697,6 @@ button {
   color: red;
 }
 .footer__icon {
-  height: 13px;
   width: 14px;
 }
 
@@ -571,7 +735,7 @@ button {
 .sign-in,
 .sign-up {
   border-color: transparent;
-  transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 500ms cubic-bezier(0.38, 0.53, 0.8, 0.71);
 }
 .sign-in:hover,
 .sign-up:hover {
@@ -585,6 +749,17 @@ button {
   justify-content: space-evenly;
   align-items: center;
   padding-top: 50px;
+}
+
+.login-title {
+  font-size: 40px;
+  font-weight: 500;
+  background: linear-gradient(225deg, #ff6b08, #eee, #ff6b08) 0 0/400%, 100%;
+  color: transparent;
+  border-radius: 2px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: move-bg 15s infinite linear;
 }
 
 .login-wrapper {
@@ -613,6 +788,10 @@ button {
   left: 90%;
 }
 
+.login-modal {
+  transition: all 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71), opacity 0.5s cubic-bezier(0.38, 0.53, 0.8, 0.71);
+}
+
 .modal-login {
   position: absolute;
   background-color: #f7f7f7;
@@ -623,7 +802,6 @@ button {
   top: 10%;
   left: 50%;
   transform: translateX(-50%) scale(1);
-  transition: all 500ms cubic-bezier(0.38, 0.53, 0.8, 0.71), opacity 500ms cubic-bezier(0.38, 0.53, 0.8, 0.71);
   overflow: hidden;
 }
 .modal-login-close-btn {
@@ -644,7 +822,7 @@ button {
   margin-top: 50px;
   width: 250px;
   font-size: 12px;
-  color: black;
+  color: #000000;
 }
 
 .login-input {
@@ -654,18 +832,15 @@ button {
   font-size: 14px;
   line-height: 1.142;
   display: flex;
-  color: #ffffff;
+  color: #000000;
   background: transparent;
   border: none;
-  border-bottom: 0.5px solid #545454;
+  border-bottom: 2px solid #545454;
   outline: none;
   transition: all 500ms cubic-bezier(0.38, 0.53, 0.8, 0.71);
 }
-.login-input:focus {
-  border-bottom: 0.5px solid #ff6b08;
-}
-.login-input:hover {
-  border-bottom: 0.5px solid #ff6b08;
+.login-input:focus, .login-input:hover {
+  border-bottom: 2px solid #ff6b08;
 }
 
 .backdrop {
@@ -675,7 +850,7 @@ button {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1), visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .is-hidden {
@@ -870,16 +1045,15 @@ button {
 }
 .modal__container {
   width: 50%;
+  max-width: 900px;
   height: 75%;
   background-color: #f7f7f7;
   margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
   opacity: 1;
-  gap: 10px;
-  padding-top: 40px;
+  min-width: 240px;
 }
 .modal__slide {
   transition: 1s;
@@ -888,20 +1062,20 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
 }
 .modal__nav {
   text-align: center;
-  margin-top: 30px;
+  padding-bottom: 10px;
 }
 .modal__navlink {
   display: inline-block;
-  height: 20px;
-  width: 20px;
+  height: 10px;
+  width: 10px;
   border-radius: 50%;
   border: 1px #fff solid;
   background-color: #333;
-  margin: 0 10px 0 10px;
+  margin: 0 5px 0 5px;
   transition: background-color 0.6s ease;
 }
 .modal__navlink.active {
@@ -912,13 +1086,13 @@ button {
   width: 80%;
   border-radius: 2%;
   transition: ease-in-out 500ms;
-  max-height: 450px;
+  max-height: 200px;
 }
 .modal__description {
   font-family: "Roboto";
   width: 80%;
   text-align: center;
-  font-size: 24px;
+  font-size: 16px;
   line-height: 1.17;
 }
 .modal__info {
@@ -928,10 +1102,19 @@ button {
   flex-direction: column;
 }
 .modal__name {
-  position: absolute;
-  top: 180px;
-  font-family: "Roboto";
-  font-size: 34px;
+  font-family: "Mynerve";
+  font-size: 22px;
+  display: flex;
+  min-width: 200px;
+  gap: 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal__spin {
+  position: relative;
+  top: 0px;
+  left: 0px;
 }
 
 .is-hidden {
@@ -942,7 +1125,7 @@ button {
 
 .fade {
   animation-name: fade;
-  animation-duration: 1s;
+  animation-duration: 1.5s;
 }
 
 @keyframes fade {
@@ -951,6 +1134,56 @@ button {
   }
   to {
     opacity: 1;
+  }
+}
+@media screen and (min-width: 768px) {
+  .modal__name {
+    font-size: 32px;
+    flex-direction: row;
+  }
+  .modal__spin {
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+  .modal__image {
+    max-height: 300px;
+  }
+  .modal__slide {
+    gap: 20px;
+  }
+  .modal__navlink {
+    margin: 0 10px 0 10px;
+    height: 20px;
+    width: 20px;
+  }
+  .modal__description {
+    font-size: 22px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .modal__name {
+    gap: 40px;
+    font-size: 44px;
+  }
+  .modal__spin {
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+  .modal__image {
+    max-height: 400px;
+  }
+  .modal__slide {
+    gap: 20px;
+  }
+  .modal__navlink {
+    margin: 0 10px 0 10px;
+    height: 20px;
+    width: 20px;
+  }
+  .modal__description {
+    font-size: 22px;
   }
 }
 @keyframes spinner-line-fade-more {
@@ -987,4 +1220,33 @@ button {
     transform: scale(1);
     opacity: 1;
   }
+}
+.scroll-top-button {
+  position: fixed;
+  right: 20px;
+  bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  border: 0;
+  border-radius: 50%;
+  background: #ff6b08;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 1000;
+}
+.scroll-top-button.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.scroll-top-button:hover {
+  opacity: 0.8;
+}
+
+.scroll-top-icon {
+  fill: #ffffff;
 }/*# sourceMappingURL=index.css.map */
