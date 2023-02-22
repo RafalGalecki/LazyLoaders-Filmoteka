@@ -10,11 +10,15 @@ export function loadMovies() {
     const genres = el;
 
     //get movies with genres description
-    getInitialMovies().then(res => {
-      const initialMovies = res.data.results;
-      console.log('Error initialMovies', initialMovies);
-      generateCards(initialMovies, genres);
-    });
+    getInitialMovies()
+      .then(res => {
+        const initialMovies = res.data.results;
+        console.log('Error initialMovies', initialMovies);
+        generateCards(initialMovies, genres);
+      })
+      .catch(function (error) {
+        // handle error
+      });
   });
 
   //create set of movie cards
@@ -36,7 +40,7 @@ export function loadMovies() {
   }
 
   //create single movie card element
-function createMovieCard(singleMovie, genresDesc) {
+  function createMovieCard(singleMovie, genresDesc) {
     let movieWrapper = document.createElement('div');
     movieWrapper.classList.add('movie-card');
     movieWrapper.setAttribute('id', singleMovie.id);
