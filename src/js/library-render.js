@@ -74,7 +74,7 @@ export function reviewMovies(event) {
     //refreshRenderingPagination();
     //generatePageButtons((totalPages = 1), (selectedPage = 1));
     setTimeout(() => {
-      if (getWatchedMovies[0]) {
+      if (getQueueMovies[0]) {
         renderStorageMovies(getQueueMovies[0]);
       } else {
         watchedMoviesContainer.appendChild(templCard);
