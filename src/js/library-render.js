@@ -52,7 +52,7 @@ export function reviewMovies(event) {
     preloader.classList.remove('hidden');
     refreshRendering();
     refreshRenderingPagination();
-    generatePageButtons((totalPages = 1), (selectedPage = 1));
+    //generatePageButtons((totalPages = 1), (selectedPage = 1));
     setTimeout(() => {
       if (getWatchedMovies[0]) {
         renderStorageMovies(getWatchedMovies[0]);
@@ -72,7 +72,7 @@ export function reviewMovies(event) {
     preloader.classList.remove('hidden');
     refreshRendering();
     refreshRenderingPagination();
-    generatePageButtons((totalPages = 1), (selectedPage = 1));
+   // generatePageButtons((totalPages = 1), (selectedPage = 1));
     setTimeout(() => {
       if (getWatchedMovies[0]) {
         renderStorageMovies(getQueueMovies[0]);
