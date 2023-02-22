@@ -176,7 +176,16 @@ export function mobileFit(pagesAmount) {
 function handleVisibilityOfEllipisButtons(selectedPage, totalPages) {
   const backwardEllipsisBtn = document.getElementById('prevStepButton');
   const forwardEllipsisBtn = document.getElementById('nextStepButton');
-
+  if (totalPages < 4) {
+    backwardEllipsisBtn.classList.add('hidden');
+    forwardEllipsisBtn.classList.add('hidden');
+    return;
+  }
+  if (screenWidth < 440) {
+    backwardEllipsisBtn.classList.add('hidden');
+    forwardEllipsisBtn.classList.add('hidden');
+    return;
+  }
   if (selectedPage <= 4) {
     backwardEllipsisBtn.classList.add('hidden');
 
