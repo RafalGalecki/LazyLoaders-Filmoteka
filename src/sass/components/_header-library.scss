@@ -62,7 +62,7 @@
     border-color: $accent-btn-color;
     color: $white-btn-color;
     background-color: $accent-btn-color;
-    //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
   }
 
   &--black {
@@ -123,7 +123,7 @@
   }
 
   .header__btn {
-    width: 152px;
+    width: 136px;
     height: 44px;
   }
 }
@@ -137,8 +137,4 @@
     gap: 16px;
   }
 
-  .header__btn {
-    width: 147px;
-    height: 42px;
-  }
 }
