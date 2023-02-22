@@ -23,7 +23,7 @@ export function libraryMovies(event) {
   paginationContainer.classList.add('hidden');
   preloader.classList.remove('hidden');
   refreshRendering();
-  //refreshRenderingPagination();
+  refreshRenderingPagination();
   setTimeout(() => {
     if (getWatchedMovies[0]) {
       renderStorageMovies(getWatchedMovies[0]);
@@ -54,9 +54,7 @@ export function reviewMovies(event) {
 
     refreshRenderingPagination();
 
-    //refreshRenderingPagination();
-
-    //generatePageButtons((totalPages = 1), (selectedPage = 1));
+    generatePageButtons(1, 1);
     setTimeout(() => {
       if (getWatchedMovies[0]) {
         renderStorageMovies(getWatchedMovies[0]);
@@ -76,11 +74,10 @@ export function reviewMovies(event) {
     preloader.classList.remove('hidden');
     refreshRendering();
 
-    refreshRenderingPagination();
-   // generatePageButtons((totalPages = 1), (selectedPage = 1));
+    
 
-    //refreshRenderingPagination();
-    //generatePageButtons((totalPages = 1), (selectedPage = 1));
+    refreshRenderingPagination();
+    generatePageButtons(1, 1);
 
     setTimeout(() => {
       if (getQueueMovies[0]) {
