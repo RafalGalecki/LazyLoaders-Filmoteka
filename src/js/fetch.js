@@ -34,7 +34,6 @@ export const getSearchedMovies = async (searchInput, page = 1) => {
     .get(urlForSearching)
     .then(function (response) {
       // handle success
-      //refreshRendering();
 
       if (response.data.results.length !== 0) {
         warning.textContent = '';
@@ -42,7 +41,7 @@ export const getSearchedMovies = async (searchInput, page = 1) => {
         getTotalPages(response.data.total_pages);
         renderMovies(response);
         refreshRendering();
-        //refreshRenderingPagination();
+
         generatePageButtons(response.data.total_pages, response.data.page);
         setActivePage(selectedPage);
 
@@ -55,9 +54,6 @@ export const getSearchedMovies = async (searchInput, page = 1) => {
     })
     .catch(function (error) {
       // handle error
-      // Notiflix.Notify.error(
-      //   'We are sorry, but getting data is impossible in that moment'
-      // );
     });
 
   return response;
@@ -79,8 +75,7 @@ export const getInitialMovies = async (page = 1) => {
 
       setPaginationState('popular');
       getTotalPages(response.data.total_pages);
-      //refreshRendering();
-      //refreshRenderingPagination();
+
       renderMovies(response);
       generatePageButtons(response.data.total_pages, response.data.page);
       setActivePage(selectedPage);
@@ -89,9 +84,6 @@ export const getInitialMovies = async (page = 1) => {
     })
     .catch(function (error) {
       // handle error
-      // Notiflix.Notify.warning(
-      //   'We are sorry, but getting data is impossible in that moment'
-      // );
     });
 
   return response;
@@ -113,10 +105,6 @@ export const getGenres = async () => {
     })
     .catch(function (error) {
       // handle error
-      // handle error
-      // Notiflix.Notify.error(
-      //   'We are sorry, but getting data is impossible in that moment'
-      // );
     });
 
   return response;
@@ -141,10 +129,6 @@ export const getMovieDetails = async movie_id => {
     })
     .catch(function (error) {
       // handle error
-      // handle error
-      // Notiflix.Notify.warning(
-      //   'We are sorry, but getting data is impossible in that moment'
-      // );
     });
 
   return response;
