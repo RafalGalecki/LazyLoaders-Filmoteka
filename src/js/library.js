@@ -107,7 +107,9 @@ export const getWatchedMovies =
             const storageMovies = result;
             watchedMovies.push(storageMovies);
           })
-          .catch(error => console.log(error));
+          .catch(function (error) {
+            // handle error
+          });
 
         return watchedMovies;
       });
@@ -123,7 +125,9 @@ export const getQueueMovies =
             const storageMovies = result;
             queueMovies.push(storageMovies);
           })
-          .catch(error => console.log(error));
+          .catch(function (error) {
+            // handle error
+          });
         return queueMovies;
       });
 
