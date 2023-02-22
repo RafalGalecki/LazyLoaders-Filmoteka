@@ -9,7 +9,7 @@ import {
 } from './refreshrendering';
 import { watchedMoviesContainer, templCard } from './library';
 import { generatePageButtons } from './newpagin';
-import { selectedPage, totalPages } from './fetch';
+//import { selectedPage, totalPages } from './fetch';
 
 const libBtnWatched = document.querySelector('.js-btn-watched');
 const libBtnQueue = document.querySelector('.js-btn-queue');
