@@ -21,13 +21,13 @@ let user;
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAwXObZpcAp1uILR4HQJMXwwu50FzgIP0E",
-  authDomain: "filmoteka-d1a57.firebaseapp.com",
-  projectId: "filmoteka-d1a57",
-  storageBucket: "filmoteka-d1a57.appspot.com",
-  messagingSenderId: "372882009932",
-  appId: "1:372882009932:web:5967a87f09a5b8098c29e9",
-  measurementId: "G-G8TWWHT34M"
+  apiKey: 'AIzaSyAwXObZpcAp1uILR4HQJMXwwu50FzgIP0E',
+  authDomain: 'filmoteka-d1a57.firebaseapp.com',
+  projectId: 'filmoteka-d1a57',
+  storageBucket: 'filmoteka-d1a57.appspot.com',
+  messagingSenderId: '372882009932',
+  appId: '1:372882009932:web:5967a87f09a5b8098c29e9',
+  measurementId: 'G-G8TWWHT34M',
 };
 
 // Initialize Firebase
@@ -42,13 +42,14 @@ signUp.addEventListener('click', e => {
     createUserWithEmailAndPassword(auth, email.value, password.value)
       .then(userCredential => {
         // Signed in
-          const user = userCredential.user;
-           Notify.success(`Registration success :)`);
+        const user = userCredential.user;
+        Notify.success(`Registration success :)`);
       })
       .catch(error => {
-        
         const errorMessage = error.message;
-         Notify.failure(`Email is already in use! Try use different email.`);
+        Notify.failure(
+          `Oops! Something wrong with your Email address or password. Check if you have enetred them correctly.`
+        );
         // ..
       });
 });

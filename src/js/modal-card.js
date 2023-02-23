@@ -1,15 +1,18 @@
 import '../sass/components/_modal-card.scss';
 import { moviesContainer } from './cards-home';
-import { watchedMoviesContainer } from './library';
 import { getMovieDetails } from './fetch';
 import { saveToWatched } from './localStorage';
 import { saveToQue } from './localStorage';
 import { movieID } from './fetch';
+import { libraryUpdate } from './newLibrary';
 import debounce from 'lodash.debounce';
 
 const modal = document.querySelector('.modal-card');
 const btnClose = modal.querySelector('.btn--close');
 let variablesCSS = document.querySelector(':root');
+const watchedMoviesContainer = document.querySelector(
+  '.cards-watched-container'
+);
 
 export const createModalCard = el => {
   const modalImage = document.createElement('img');
@@ -170,6 +173,10 @@ export const createModalCard = el => {
   }
 
   modalBtnAddQue.addEventListener('click', saveToQue);
+
+  //Listeners to dynamic library
+  modalBtnAddWatch.addEventListener('click', libraryUpdate)
+  modalBtnAddQue.addEventListener('click', libraryUpdate)
 };
 
 const displayMovieInfo = async e => {

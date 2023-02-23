@@ -3,11 +3,10 @@ import '../sass/components/_header-home.scss';
 
 import { getGenres, getMovieDetails } from './fetch';
 import { loadMovies } from './cards-home';
-import { refreshRendering } from './refreshrendering';
 import { moviesContainer } from './cards-home';
 import { clearInput } from './search-form';
 import { preloader } from './spinner';
-import { refreshRenderingPagination } from './refreshrendering';
+import { refreshRenderingPagination, refreshRendering } from './refreshrendering';
 import { libraryMovies, reviewMovies } from './library-render';
 import { generatePageButtons } from './newpagin';
 
