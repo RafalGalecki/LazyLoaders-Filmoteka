@@ -15,10 +15,23 @@
     border: 1px solid #ff6b01;
     background: #ff6b01;
     color: #ffffff;
+    transition: box-shadow 500 ease-in-out, scale 500 ease-in-out;
   }
   
+  &__addToWatched:hover {
+    box-shadow: 2px 4px 14px -2px rgba(212, 119, 25, 1);
+    scale: (1.1);
+  }
+  
+
   &__addToQue {
     background: #ffffff;
+    transition: box-shadow 500 ease-in-out, scale 500 ease-in-out;
+  }
+
+  &__addToQue:hover {
+    box-shadow: 2px 4px 24px -2px rgba(212, 119, 25, 1);
+    scale: (1.1);
   }
   
   &--close {
