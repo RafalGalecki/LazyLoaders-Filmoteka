@@ -11,8 +11,10 @@ import './js/login-modal';
 import './js/day-night';
 
 import './js/localStorage';
-import './js/library';
-import './js/library-render';
+/* import './js/library';
+import './js/library-render'; */
+import './js/newLibrary'
+import './js/newLibraryRender'
 
 import './js/localStorage';
 import './js/students-modal';
