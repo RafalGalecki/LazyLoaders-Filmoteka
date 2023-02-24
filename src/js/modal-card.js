@@ -4,7 +4,7 @@ import { getMovieDetails } from './fetch';
 import { saveToWatched } from './localStorage';
 import { saveToQue } from './localStorage';
 import { movieID } from './fetch';
-import { libraryUpdate } from './newLibrary';
+import { libraryUpdate, pageState } from './newLibrary';
 import debounce from 'lodash.debounce';
 
 const modal = document.querySelector('.modal-card');
@@ -156,7 +156,7 @@ export const createModalCard = el => {
 
   if (watched.includes(movieID)) {
     modalBtnAddWatch.textContent = 'REMOVE FROM WATCHED';
-    modalBtnAddQue.textContent = 'ALREADY WATCHED';
+    modalBtnAddQue.textContent = 'ADD TO QUE';
   }
 
   modalBtnAddWatch.addEventListener('click', saveToWatched);
@@ -175,8 +175,13 @@ export const createModalCard = el => {
   modalBtnAddQue.addEventListener('click', saveToQue);
 
   //Listeners to dynamic library
-  modalBtnAddWatch.addEventListener('click', libraryUpdate)
+  if (pageState === 'library-watched') {
+    modalBtnAddWatch.addEventListener('click', libraryUpdate)
+  }
+
+  if (pageState === 'library-que') {
   modalBtnAddQue.addEventListener('click', libraryUpdate)
+  }
 };
 
 const displayMovieInfo = async e => {
