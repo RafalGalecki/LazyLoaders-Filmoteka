@@ -1,9 +1,7 @@
 import { movieID } from './fetch';
 
-
 //Function for seting localStorage for watched movies
 export const saveToWatched = () => {
-
   let watched = [];
   let que = [];
 
@@ -18,28 +16,34 @@ export const saveToWatched = () => {
   }
 
   if (dataQue != null) {
-    que= que.concat(...dataQue);
+    que = que.concat(...dataQue);
   }
-
-  if (que.includes(movieID)) {
-    const index = que.indexOf(movieID);
-    que.splice(index, 1)
+  if (watchedButton.textContent !== 'REMOVE FROM WATCHED') {
+    if (que.includes(movieID)) {
+      const index = que.indexOf(movieID);
+      que.splice(index, 1);
+    }
+    queButton.textContent = 'ADD TO QUE';
   }
-
+  if (watchedButton.textContent !== 'REMOVE FROM WATCHED') {
+  }
   if (watched.includes(movieID)) {
     const index = watched.indexOf(movieID);
     watched.splice(index, 1);
     watchedButton.textContent = 'ADD TO WATCHED';
-    queButton.textContent = 'ADD TO QUE'
+    queButton.textContent = 'ADD TO QUE';
+    if (que.includes(movieID)) {
+      queButton.textContent = 'REMOVE FROM QUE';
+    }
   } else {
     watched.push(movieID);
 
     watchedButton.textContent = 'REMOVE FROM WATCHED';
-    queButton.textContent = 'ALREADY WATCHED'
+    queButton.textContent = 'ADD TO QUE';
   }
 
   localStorage.setItem('watched', JSON.stringify(watched));
-  localStorage.setItem('que', JSON.stringify(que))
+  localStorage.setItem('que', JSON.stringify(que));
 };
 
 //Function for seting localStorage for que movies
@@ -49,7 +53,7 @@ export const saveToQue = () => {
   const data = JSON.parse(localStorage.getItem('que'));
 
   if (data != null) {
-    que= que.concat(...data);
+    que = que.concat(...data);
   }
 
   const queButton = document.querySelector('.btn__addToQue');
