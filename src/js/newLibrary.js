@@ -20,11 +20,13 @@ const watchedMoviesContainer = document.querySelector(
   '.cards-watched-container'
 );
 
-const test = document.querySelector('header')
+export let pageState = 'home'
+
+/* const test = document.querySelector('header')
 
 
 console.log(headerLibrary)
-console.log(headerLibrary.classList.contains('vissualy-hidden'))
+console.log(headerLibrary.classList.contains('vissualy-hidden')) */
 
 
 const watchedButton = document.querySelector('.js-btn-watched')
@@ -35,7 +37,6 @@ const libraryEmptyTempl = document.querySelector('.library-empty');
 const templCard = templ.querySelector('.content-library__card'); */
 
 function showLibrary(event) {
-  const watched = JSON.parse(localStorage.getItem('watched')) || '';
   const queue = JSON.parse(localStorage.getItem('que')) || '';
 
   if (event.target.nodeName !== 'A') {
@@ -55,25 +56,7 @@ function showLibrary(event) {
     headerLibrary.classList.remove('visually-hidden');
     cardsLibraryWatched.classList.remove('visually-hidden');
     watchedButton.classList.remove('btn-lib-js-active');
-    queueButton.classList.remove('btn-lib-js-active');
-
-    let watchedMovies = [];
-
-    const getWatchedMovies =
-      watched.length === 0
-        ? []
-        : watched.map(el => {
-            getMovieDetails(el)
-              .then(result => {
-                const storageMovies = result;
-                watchedMovies.push(storageMovies);
-              })
-              .catch(function (error) {
-                // handle error
-              });
-
-            return watchedMovies;
-          });
+    queueButton.classList.add('btn-lib-js-active');
 
     let queueMovies = [];
 
@@ -92,22 +75,21 @@ function showLibrary(event) {
             return queueMovies;
           });
 
-    console.log(watchedMovies);
+
     setTimeout(() => {
-      if (getWatchedMovies[0]) {
-        renderStorageMovies(getWatchedMovies[0]);
-      }
       if (getQueueMovies[0]) {
         renderStorageMovies(getQueueMovies[0]);
       }
-      if (getQueueMovies.length === 0 && getWatchedMovies.length === 0) {
-       // watchedMoviesContainer.appendChild(templCard);
+      if (getQueueMovies.length === 0) {
+
        libraryEmptyTempl.classList.remove('visually-hidden')
        refreshRenderingPagination();
       }
       preloader.classList.add('hidden');
       paginationContainer.classList.remove('hidden');
     }, 500);
+
+    pageState = 'library-que'
   }
 }
 
@@ -177,6 +159,7 @@ function showHome(event) {
     paginationContainer.classList.remove('hidden');
     headerLibrary.classList.add('visually-hidden');
     cardsLibraryWatched.classList.add('visually-hidden');
+    pageState = 'home'
   }
 }
 
@@ -222,6 +205,9 @@ function showWatched() {
             preloader.classList.add('hidden');
             paginationContainer.classList.remove('hidden');
           }, 500);
+
+          pageState = 'library-watched'
+
 }
 
 function showQueue() {
@@ -266,16 +252,22 @@ function showQueue() {
             paginationContainer.classList.remove('hidden');
           }, 500);
 
+          pageState = 'library-que'
 }
 
 export function libraryUpdate(event) {
     event.preventDefault();
 
-    if ('true') {
-        console.log('hej')
-    } else {
-        console.log('siema')
-        return
+    if (pageState === 'home') {
+        console.log('home')
+    }
+    if (pageState === 'library-que') {
+        console.log('que')
+        showQueue()
+    }
+    if (pageState === 'library-watched') {
+        console.log('watched')
+        showWatched()
     }
 }
 
