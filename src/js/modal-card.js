@@ -181,6 +181,10 @@ export const createModalCard = el => {
 
   if (pageState === 'library-que') {
   modalBtnAddQue.addEventListener('click', libraryUpdate)
+  
+   if (modalBtnAddWatch.textContent === 'ADD TO WATCHED') {
+    modalBtnAddWatch.addEventListener('click', libraryUpdate)
+  }
   }
 };
 
@@ -206,7 +210,7 @@ const displayMovieInfo = async e => {
   });
 };
 
-function hideModal() {
+export function hideModal() {
   modal.parentElement.classList.add('is-hidden');
 
   //select elements to be removed
