@@ -8,8 +8,9 @@ import {
 } from './refreshrendering';
 import { generatePageButtons } from './newpagin';
 import { moviesContainer, loadMovies } from './cards-home';
-import { getGenres, getMovieDetails } from './fetch';
+import { getMovieDetails } from './fetch';
 import { clearInput } from './search-form';
+import { hideModal } from './modal-card';
 
 const myLibrary = document.querySelector('.js-library');
 const paginationContainer = document.getElementById('pagination-numbers');
@@ -22,26 +23,19 @@ const watchedMoviesContainer = document.querySelector(
 
 export let pageState = 'home'
 
-/* const test = document.querySelector('header')
-
-
-console.log(headerLibrary)
-console.log(headerLibrary.classList.contains('vissualy-hidden')) */
-
-
 const watchedButton = document.querySelector('.js-btn-watched')
 const queueButton = document.querySelector('.js-btn-queue')
 
 const libraryEmptyTempl = document.querySelector('.library-empty');
-/* const templ = libraryEmptyTempl.content.cloneNode(true);
-const templCard = templ.querySelector('.content-library__card'); */
 
+
+//Generate library after clicking "My Library"
 function showLibrary(event) {
   const queue = JSON.parse(localStorage.getItem('que')) || '';
 
-  if (event.target.nodeName !== 'A') {
+/*   if (event.target.nodeName !== 'A') {
     return;
-  }
+  } */
 
   if (event.target.classList.contains('js-library')) {
     preloader.classList.remove('hidden');
@@ -77,10 +71,20 @@ function showLibrary(event) {
 
 
     setTimeout(() => {
-      if (getQueueMovies[0]) {
-        renderStorageMovies(getQueueMovies[0]);
-      }
-      if (getQueueMovies.length === 0) {
+/*         let trueOrFalse = 'true'
+
+          for (let i = 0; i < queueMovies.length; i++) {
+                const el = queueMovies[i];
+                const elId = el.id
+
+                if (queue.includes(elId)) {
+                    console.log('mam to')
+                }
+            }*/
+       if (queueMovies) {
+        renderStorageMovies(queueMovies);
+      } 
+      if (queueMovies.length === 0) {
 
        libraryEmptyTempl.classList.remove('visually-hidden')
        refreshRenderingPagination();
@@ -93,22 +97,21 @@ function showLibrary(event) {
   }
 }
 
+//Generate cards with saved movies
 export function renderStorageMovies(response) {
   refreshRendering();
   //get genres for movies
-  if (response !== undefined) {
-    getGenres().then(el => {
-      const genres = el;
-      generateCards(response);
-    });
+   if (response !== undefined) {
+
+      generateCards(response)
   }
 
   //create set of movie cards
-  function generateCards(data) {
+   function generateCards(data) {
     data.map(el => {
       createMovieCard(el);
     });
-  }
+  }  
   //create single movie card element
   function createMovieCard(singleMovie) {
     let movieWrapper = document.createElement('div');
@@ -141,6 +144,7 @@ export function renderStorageMovies(response) {
   }
 }
 
+//Generate home after clicking "home"
 function showHome(event) {
 
   event.preventDefault();
@@ -163,6 +167,7 @@ function showHome(event) {
   }
 }
 
+//Generate library-watched after clicking "watched"
 function showWatched() {
     const watched = JSON.parse(localStorage.getItem('watched')) || '';
 
@@ -192,15 +197,15 @@ function showWatched() {
           libraryEmptyTempl.classList.add('visually-hidden')
           watchedButton.classList.add('btn-lib-js-active');
           queueButton.classList.remove('btn-lib-js-active');
-      
+          
           setTimeout(() => {
-            if (getWatchedMovies[0]) {
-              renderStorageMovies(getWatchedMovies[0]);
-            }
-            if (getWatchedMovies.length === 0) {
+
+             if (watchedMovies) {
+              renderStorageMovies(watchedMovies);
+            } 
+            if (watchedMovies.length === 0) {
                 libraryEmptyTempl.classList.remove('visually-hidden')
                 refreshRenderingPagination();
-              //watchedMoviesContainer.appendChild(templCard);
             }
             preloader.classList.add('hidden');
             paginationContainer.classList.remove('hidden');
@@ -210,6 +215,7 @@ function showWatched() {
 
 }
 
+//Generate library-queue after clicking "queue"
 function showQueue() {
     const queue = JSON.parse(localStorage.getItem('que')) || '';
 
@@ -240,13 +246,12 @@ function showQueue() {
           queueButton.classList.add('btn-lib-js-active');
       
           setTimeout(() => {
-            if (getQueueMovies[0]) {
-              renderStorageMovies(getQueueMovies[0]);
+            if (queueMovies) {
+              renderStorageMovies(queueMovies);
             }
-            if (getQueueMovies.length === 0) {
+            if (queueMovies.length === 0) {
                 libraryEmptyTempl.classList.remove('visually-hidden')
                 refreshRenderingPagination();
-              //watchedMoviesContainer.appendChild(templCard);
             }
             preloader.classList.add('hidden');
             paginationContainer.classList.remove('hidden');
@@ -255,22 +260,29 @@ function showQueue() {
           pageState = 'library-que'
 }
 
+//Generate dynamic library
 export function libraryUpdate(event) {
     event.preventDefault();
 
     if (pageState === 'home') {
-        console.log('home')
+        
     }
     if (pageState === 'library-que') {
-        console.log('que')
+
+
         showQueue()
+        hideModal()
+
     }
     if (pageState === 'library-watched') {
-        console.log('watched')
+        console.log('library-watched')
         showWatched()
+        hideModal()
+
     }
 }
 
+//EventListeners to buttons
 myLibrary.addEventListener('click', showLibrary);
 
 headerLibrary.addEventListener('click', showHome);
